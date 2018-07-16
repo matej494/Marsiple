@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
+		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -24,6 +26,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		329A3398E1E61CC2904E6614 /* Pods-MarsipleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsipleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MarsipleTests/Pods-MarsipleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4205AB745763B42F7DC6D9FF /* Pods-Marsiple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.release.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.release.xcconfig"; sourceTree = "<group>"; };
+		6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marsiple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsipleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarsipleTests/Pods-MarsipleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,18 +54,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08403ABA8363FBFDEFAA0A1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */,
+				4205AB745763B42F7DC6D9FF /* Pods-Marsiple.release.xcconfig */,
+				329A3398E1E61CC2904E6614 /* Pods-MarsipleTests.debug.xcconfig */,
+				6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BB41B4F4C5784C9AF9515BD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */,
+				D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5E47A8B20FC8797007184ED = {
 			isa = PBXGroup;
 			children = (
 				F5E47A9620FC8797007184ED /* Marsiple */,
 				F5E47AAB20FC8798007184ED /* MarsipleTests */,
 				F5E47A9520FC8797007184ED /* Products */,
+				08403ABA8363FBFDEFAA0A1C /* Pods */,
+				BB41B4F4C5784C9AF9515BD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,9 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5E47AB120FC8798007184ED /* Build configuration list for PBXNativeTarget "Marsiple" */;
 			buildPhases = (
+				027403AAC6BE23508FD3A398 /* [CP] Check Pods Manifest.lock */,
 				F5E47A9020FC8797007184ED /* Sources */,
 				F5E47A9120FC8797007184ED /* Frameworks */,
 				F5E47A9220FC8797007184ED /* Resources */,
+				3DC7F521E90BD2C65E6C752C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,6 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5E47AB420FC8798007184ED /* Build configuration list for PBXNativeTarget "MarsipleTests" */;
 			buildPhases = (
+				4F8689503003149450FBED84 /* [CP] Check Pods Manifest.lock */,
 				F5E47AA420FC8798007184ED /* Sources */,
 				F5E47AA520FC8798007184ED /* Frameworks */,
 				F5E47AA620FC8798007184ED /* Resources */,
@@ -278,6 +313,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		027403AAC6BE23508FD3A398 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Marsiple-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DC7F521E90BD2C65E6C752C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F8689503003149450FBED84 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarsipleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5E47A9020FC8797007184ED /* Sources */ = {
@@ -423,15 +515,13 @@
 		};
 		F5E47AB220FC8798007184ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = Marsiple/Resources/Other/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.Marsiple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -441,15 +531,13 @@
 		};
 		F5E47AB320FC8798007184ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4205AB745763B42F7DC6D9FF /* Pods-Marsiple.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = Marsiple/Resources/Other/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.Marsiple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -459,17 +547,14 @@
 		};
 		F5E47AB520FC8798007184ED /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 329A3398E1E61CC2904E6614 /* Pods-MarsipleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = MarsipleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.MarsipleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -480,17 +565,14 @@
 		};
 		F5E47AB620FC8798007184ED /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = MarsipleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.MarsipleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

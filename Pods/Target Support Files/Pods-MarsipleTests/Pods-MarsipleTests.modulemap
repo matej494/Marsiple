@@ -1,0 +1,6 @@
+framework module Pods_MarsipleTests {
+  umbrella header "Pods-MarsipleTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
