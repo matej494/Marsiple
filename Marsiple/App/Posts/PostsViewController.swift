@@ -43,7 +43,7 @@ extension PostsViewController: UITableViewDataSource {
 
 private extension PostsViewController {
     func setupNavigationBar() {
-        navigationItem.title = "Posts"
+        navigationItem.title = LocalizationKey.Posts.navigationBarTitle.localized()
     }
     
     func setupView() {
