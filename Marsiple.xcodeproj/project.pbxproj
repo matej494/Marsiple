@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
 		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
+		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
+		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
+		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
+		F55050B720FCB395001788D0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B620FCB395001788D0 /* Post.swift */; };
+		F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B820FCB822001788D0 /* PostTableViewCell.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -32,6 +37,11 @@
 		6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsipleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarsipleTests/Pods-MarsipleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
+		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
+		F55050B620FCB395001788D0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F55050B820FCB822001788D0 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +91,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F55050AF20FCB10D001788D0 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				F55050B020FCB166001788D0 /* PostsViewController.swift */,
+				F55050B220FCB272001788D0 /* PostsView.swift */,
+				F55050B820FCB822001788D0 /* PostTableViewCell.swift */,
+			);
+			path = Posts;
+			sourceTree = "<group>";
+		};
 		F5E47A8B20FC8797007184ED = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E47A9720FC8797007184ED /* AppDelegate.swift */,
+				F55050AF20FCB10D001788D0 /* Posts */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -176,6 +197,7 @@
 		F5E47ABD20FC88FE007184ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -183,6 +205,7 @@
 		F5E47ABE20FC8908007184ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F55050B620FCB395001788D0 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,7 +399,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
+				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
+				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
+				F55050B720FCB395001788D0 /* Post.swift in Sources */,
+				F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +549,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = Marsiple/Resources/Other/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.Marsiple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -537,7 +568,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = Marsiple/Resources/Other/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.Marsiple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -554,7 +588,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = MarsipleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.MarsipleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -572,7 +610,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NV38R3X63U;
 				INFOPLIST_FILE = MarsipleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.matejkorman.MarsipleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
