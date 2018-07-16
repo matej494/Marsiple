@@ -19,6 +19,7 @@ class PostsViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        title = "Posts"
         postsView.tableView.dataSource = self
         setupView()
         setupNavigationBar()

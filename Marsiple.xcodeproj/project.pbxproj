@@ -17,6 +17,7 @@
 		F55050BC20FCF762001788D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F55050BB20FCF762001788D0 /* Localizable.strings */; };
 		F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BD20FCF84E001788D0 /* LocalizationKey.swift */; };
 		F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BF20FCF982001788D0 /* String-Marsiple.swift */; };
+		F55050C520FD0181001788D0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C420FD0181001788D0 /* TabBarController.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -48,6 +49,7 @@
 		F55050BB20FCF762001788D0 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		F55050BD20FCF84E001788D0 /* LocalizationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKey.swift; sourceTree = "<group>"; };
 		F55050BF20FCF982001788D0 /* String-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Marsiple.swift"; sourceTree = "<group>"; };
+		F55050C420FD0181001788D0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,14 @@
 			path = Posts;
 			sourceTree = "<group>";
 		};
+		F55050C320FCFFE4001788D0 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				F55050C420FD0181001788D0 /* TabBarController.swift */,
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
 		F5E47A8B20FC8797007184ED = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F5E47A9720FC8797007184ED /* AppDelegate.swift */,
+				F55050C320FCFFE4001788D0 /* Tab Bar */,
 				F55050AF20FCB10D001788D0 /* Posts */,
 			);
 			path = App;
@@ -426,6 +437,7 @@
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
 				F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */,
 				F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */,
+				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
