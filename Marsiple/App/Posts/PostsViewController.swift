@@ -19,7 +19,6 @@ class PostsViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Posts"
         postsView.tableView.dataSource = self
         setupView()
         setupNavigationBar()
@@ -48,6 +47,7 @@ private extension PostsViewController {
     }
     
     func setupView() {
+        title = LocalizationKey.Posts.navigationBarTitle.localized()
         view.backgroundColor = .white
         view.addSubview(postsView)
         postsView.snp.makeConstraints {

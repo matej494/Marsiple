@@ -13,6 +13,9 @@ class TabBarController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
         let navigationController = UINavigationController(rootViewController: PostsViewController())
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.barTintColor = MatrianColor.gray.value
+        tabBar.barTintColor = MatrianColor.dark.value
+        tabBar.tintColor = .white
         viewControllers = [navigationController]
     }
     
