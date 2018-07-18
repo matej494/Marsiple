@@ -8,12 +8,16 @@
 
 import Foundation
 
-class Post {
+class Post: Codable {
+    let id: Int
     let title: String
     let body: String
+    let userId: Int
     
-    init(title: String, body: String) {
+    init(id: Int, title: String, body: String, userId: Int) {
+        self.id = id
         self.title = title
         self.body = body
+        self.userId = userId
     }
 }

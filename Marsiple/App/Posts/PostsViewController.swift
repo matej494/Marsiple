@@ -9,20 +9,21 @@
 import SnapKit
 
 class PostsViewController: UIViewController {
-    private let posts = [Post(title: "Title 1", body: "Body 1"),
-                         Post(title: "Title 2", body: "Body 2"),
-                         Post(title: "Title 3", body: "Body 3"),
-                         Post(title: "Title 4", body: "Body 4"),
-                         Post(title: "Title 5", body: "Body 5"),
-                         Post(title: "Title 6", body: "Body 6")]
+    private var posts: [Post]
     private let postsView = PostsView.autolayoutView()
+    private let postsFetcher = PostsFetcher()
     
     init() {
+        posts = []
         super.init(nibName: nil, bundle: nil)
-        title = "Posts"
         postsView.tableView.dataSource = self
         setupView()
         setupNavigationBar()
+        postsFetcher.get(succes: { posts in
+                            self.posts = posts
+                            self.postsView.tableView.reloadData() },
+                         faliure: { error in
+                            print(error) })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,6 +49,7 @@ private extension PostsViewController {
     }
     
     func setupView() {
+        title = LocalizationKey.Posts.navigationBarTitle.localized()
         view.backgroundColor = .white
         view.addSubview(postsView)
         postsView.snp.makeConstraints {
