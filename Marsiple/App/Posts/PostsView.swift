@@ -23,12 +23,12 @@ class PostsView: UIView {
 
 private extension PostsView {
     func setupViews() {
-        backgroundColor = MatrianColor.lightGray.value
+        backgroundColor = .martianLightGrey
         setupTableview()
     }
     
     func setupTableview() {
-        tableView.backgroundColor = MatrianColor.lightGray.value
+        tableView.backgroundColor = .martianLightGrey
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         addSubview(tableView)
         tableView.snp.makeConstraints {
