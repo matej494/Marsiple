@@ -15,7 +15,6 @@ class PostsViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        postsView.tableView.dataSource = self
         setupView()
         setupNavigationBar()
         postsFetcher.get(success: { posts in
@@ -51,6 +50,7 @@ private extension PostsViewController {
         title = LocalizationKey.Posts.navigationBarTitle.localized()
         view.backgroundColor = .white
         view.addSubview(postsView)
+        postsView.tableView.dataSource = self
         postsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }

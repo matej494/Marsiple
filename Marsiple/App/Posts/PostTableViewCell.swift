@@ -32,6 +32,7 @@ extension PostTableViewCell {
 private extension PostTableViewCell {
     func setupViews() {
         accessoryType = .disclosureIndicator
+        backgroundColor = .martianLightGrey
         setupTitle()
         setupBody()
     }
