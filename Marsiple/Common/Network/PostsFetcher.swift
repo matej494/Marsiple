@@ -17,11 +17,11 @@ enum PostsFetcherError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .urlCreationFailure:
-            return "Error creating URL."
+            return LocalizationKey.PostsFetcherError.urlCreationFailure.localized()
         case .dataUnwrapingFailure:
-            return "Error unwrapping data."
+            return LocalizationKey.PostsFetcherError.dataUnwrapingFailure.localized()
         case .parsingDataFailure:
-            return "Error parsing data."
+            return LocalizationKey.PostsFetcherError.parsingDataFailure.localized()
         case .generic(let error):
             return error.localizedDescription
         }
@@ -30,7 +30,7 @@ enum PostsFetcherError: LocalizedError {
 
 struct PostsFetcher {
     func get(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?.appendingPathComponent("/posts")
+        guard let url = MartianApi.url?.appendingPathComponent("posts")
             else { return DispatchQueue.main.async { failure(PostsFetcherError.urlCreationFailure) } }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPRequestMethod.get
