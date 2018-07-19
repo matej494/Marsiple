@@ -29,7 +29,7 @@ enum PostsFetcherError: LocalizedError {
 }
 
 struct PostsFetcher {
-    func get(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+    func getPosts(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let url = MartianApi.url?.appendingPathComponent("posts")
             else { return DispatchQueue.main.async { failure(PostsFetcherError.urlCreationFailure) } }
         var request = URLRequest(url: url)

@@ -17,11 +17,11 @@ class PostsViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupNavigationBar()
-        postsFetcher.get(success: { posts in
-                            self.posts = posts
-                            self.postsView.tableView.reloadData() },
-                         failure: { error in
-                            print(error.errorDescription) })
+        postsFetcher.getPosts(success: { [weak self] posts in
+                                self?.posts = posts
+                                self?.postsView.tableView.reloadData() },
+                              failure: { error in
+                                print(error.errorDescription) })
     }
     
     required init?(coder aDecoder: NSCoder) {
