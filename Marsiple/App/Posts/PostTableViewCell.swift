@@ -41,6 +41,7 @@ private extension PostTableViewCell {
         titleLabel.textColor = .black
         titleLabel.textAlignment = .left
         titleLabel.font = .systemFont(ofSize: 20)
+        titleLabel.numberOfLines = 0
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(10)
