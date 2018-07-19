@@ -9,21 +9,20 @@
 import SnapKit
 
 class PostsViewController: UIViewController {
-    private var posts: [Post]
+    private var posts: [Post] = []
     private let postsView = PostsView.autolayoutView()
     private let postsFetcher = PostsFetcher()
     
     init() {
-        posts = []
         super.init(nibName: nil, bundle: nil)
         postsView.tableView.dataSource = self
         setupView()
         setupNavigationBar()
-        postsFetcher.get(succes: { posts in
+        postsFetcher.get(success: { posts in
                             self.posts = posts
                             self.postsView.tableView.reloadData() },
-                         faliure: { error in
-                            print(error) })
+                         failure: { error in
+                            print(error.errorDescription) })
     }
     
     required init?(coder aDecoder: NSCoder) {

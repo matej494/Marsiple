@@ -10,6 +10,8 @@
 		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
 		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
 		F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9A20FF5695002B5E9E /* MartianApi.swift */; };
+		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
+		F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -44,6 +46,8 @@
 		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
 		F5072A9A20FF5695002B5E9E /* MartianApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApi.swift; sourceTree = "<group>"; };
+		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
+		F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestHeader.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			children = (
 				F55050C820FE05AF001788D0 /* PostsFetcher.swift */,
 				F5072A9A20FF5695002B5E9E /* MartianApi.swift */,
+				F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */,
+				F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -444,7 +450,9 @@
 				F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */,
 				F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */,
 				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
+				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
 				F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */,
+				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
 				F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,

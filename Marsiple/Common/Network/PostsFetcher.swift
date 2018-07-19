@@ -8,24 +8,44 @@
 
 import Foundation
 
+enum PostsFetcherError: LocalizedError {
+    case urlCreationFailure
+    case dataUnwrapingFailure
+    case parsingDataFailure
+    case generic(Error)
+    
+    var errorDescription: String? {
+        switch self {
+        case .urlCreationFailure:
+            return "Error creating URL."
+        case .dataUnwrapingFailure:
+            return "Error unwrapping data."
+        case .parsingDataFailure:
+            return "Error parsing data."
+        case .generic(let error):
+            return error.localizedDescription
+        }
+    }
+}
+
 struct PostsFetcher {
-    func get(succes: @escaping ([Post]) -> Void, faliure: @escaping (String) -> Void) {
-        guard let url = URL(string: MartianApi.url + "/posts")
-            else { return DispatchQueue.main.async { faliure("Error creating URL.") } }
+    func get(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = MartianApi.url?.appendingPathComponent("/posts")
+            else { return DispatchQueue.main.async { failure(PostsFetcherError.urlCreationFailure) } }
         var request = URLRequest(url: url)
-        request.httpMethod = MartianApi.Methods.get
-        request.addValue(MartianApi.Headers.contentTypeValue, forHTTPHeaderField: MartianApi.Headers.contentType)
-        request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: MartianApi.Headers.xAuth)
+        request.httpMethod = HTTPRequestMethod.get
+        request.addValue(MartianApi.Headers.contentTypeValue, forHTTPHeaderField: HTTPRequestHeader.contentType)
+        request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             do {
                 guard let unwrappedData = data
-                    else { return DispatchQueue.main.async { faliure("Error unwrapping data.") } }
+                    else { return DispatchQueue.main.async { failure(PostsFetcherError.dataUnwrapingFailure) } }
                 let posts = try JSONDecoder().decode([Post].self, from: unwrappedData)
-                DispatchQueue.main.async { succes(posts) }
+                DispatchQueue.main.async { success(posts) }
             } catch {
-                DispatchQueue.main.async { faliure("Error parsing data.") }
+                DispatchQueue.main.async { failure(PostsFetcherError.parsingDataFailure) }
             }
         }
         task.resume()

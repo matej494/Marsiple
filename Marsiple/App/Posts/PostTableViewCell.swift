@@ -9,8 +9,8 @@
 import SnapKit
 
 class PostTableViewCell: UITableViewCell {
-    private let title = UILabel.autolayoutView()
-    private let body = UILabel.autolayoutView()
+    private let titleLabel = UILabel.autolayoutView()
+    private let bodyLabel = UILabel.autolayoutView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,8 +24,8 @@ class PostTableViewCell: UITableViewCell {
 
 extension PostTableViewCell {
     func updateCell(withPost post: Post) {
-        title.text = post.title
-        body.text = post.body
+        titleLabel.text = post.title
+        bodyLabel.text = post.body
     }
 }
 
@@ -37,25 +37,25 @@ private extension PostTableViewCell {
     }
     
     func setupTitle() {
-        title.textColor = .black
-        title.textAlignment = .left
-        title.font = .systemFont(ofSize: 20)
-        title.numberOfLines = 0
-        contentView.addSubview(title)
-        title.snp.makeConstraints {
+        titleLabel.textColor = .black
+        titleLabel.textAlignment = .left
+        titleLabel.font = .systemFont(ofSize: 20)
+        titleLabel.numberOfLines = 0
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview().inset(10)
         }
     }
     
     func setupBody() {
-        body.textColor = .black
-        body.textAlignment = .left
-        body.font = .systemFont(ofSize: 15)
-        body.numberOfLines = 0
-        contentView.addSubview(body)
-        body.snp.makeConstraints {
+        bodyLabel.textColor = .black
+        bodyLabel.textAlignment = .left
+        bodyLabel.font = .systemFont(ofSize: 15)
+        bodyLabel.numberOfLines = 0
+        contentView.addSubview(bodyLabel)
+        bodyLabel.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview().inset(15)
-            $0.top.equalTo(title.snp.bottom).inset(-10)
+            $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
         }
     }
 }

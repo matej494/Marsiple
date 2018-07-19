@@ -9,19 +9,10 @@
 import Foundation
 
 struct MartianApi {
-    static let url = "https://demo.martian.agency/api"
+    static let url = URL(string: "https://demo.martian.agency/api")
     
     struct Headers {
-        static let contentType = "Content-Type"
         static let contentTypeValue = "application/json"
-        static let xAuth = "X-Auth"
         static let xAuthValue = "bWFydGlhbmFuZG1hY2hpbmU="
-    }
-    struct Methods {
-        static let get = "GET"
-        static let post = "POST"
-        static let put = "PUT"
-        static let patch = "PATCH"
-        static let delete = "DELETE"
     }
 }
