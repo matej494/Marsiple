@@ -12,10 +12,10 @@
 		F5072A9E20FF646D002B5E9E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9D20FF646D002B5E9E /* TabBarController.swift */; };
 		F5072AA120FF64AF002B5E9E /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA020FF64AF002B5E9E /* AlbumsViewController.swift */; };
 		F5072AA320FF64CB002B5E9E /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA220FF64CB002B5E9E /* AlbumsView.swift */; };
-		F5072AA520FF6570002B5E9E /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA420FF6570002B5E9E /* UIView-Marsiple.swift */; };
 		F5072AAD2100AFC2002B5E9E /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAC2100AFC2002B5E9E /* AlbumTableViewCell.swift */; };
 		F5072AAF2101CD1D002B5E9E /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAE2101CD1D002B5E9E /* PhotoCollectionViewCell.swift */; };
 		F5072AB12101D1B3002B5E9E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB02101D1B3002B5E9E /* Album.swift */; };
+		F5072ABE21020ADE002B5E9E /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072ABD21020ADE002B5E9E /* UIView-Marsiple.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -42,10 +42,10 @@
 		F5072A9D20FF646D002B5E9E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F5072AA020FF64AF002B5E9E /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		F5072AA220FF64CB002B5E9E /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
-		F5072AA420FF6570002B5E9E /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView-Marsiple.swift"; path = "Marsiple/App/Albums/UIView-Marsiple.swift"; sourceTree = SOURCE_ROOT; };
 		F5072AAC2100AFC2002B5E9E /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		F5072AAE2101CD1D002B5E9E /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		F5072AB02101D1B3002B5E9E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Album.swift; path = Marsiple/App/Albums/Album.swift; sourceTree = SOURCE_ROOT; };
+		F5072AB02101D1B3002B5E9E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Album.swift; path = Marsiple/Common/Models/Album.swift; sourceTree = SOURCE_ROOT; };
+		F5072ABD21020ADE002B5E9E /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 		F5E47ABD20FC88FE007184ED /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F5072AA420FF6570002B5E9E /* UIView-Marsiple.swift */,
+				F5072ABD21020ADE002B5E9E /* UIView-Marsiple.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,9 +430,9 @@
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
 				F5072A9E20FF646D002B5E9E /* TabBarController.swift in Sources */,
 				F5072AA320FF64CB002B5E9E /* AlbumsView.swift in Sources */,
+				F5072ABE21020ADE002B5E9E /* UIView-Marsiple.swift in Sources */,
 				F5072AA120FF64AF002B5E9E /* AlbumsViewController.swift in Sources */,
 				F5072AAF2101CD1D002B5E9E /* PhotoCollectionViewCell.swift in Sources */,
-				F5072AA520FF6570002B5E9E /* UIView-Marsiple.swift in Sources */,
 				F5072AAD2100AFC2002B5E9E /* AlbumTableViewCell.swift in Sources */,
 				F5072AB12101D1B3002B5E9E /* Album.swift in Sources */,
 			);
