@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Marsiple
+
+  Created by Matej Korman on 16/07/2018.
+  Copyright © 2018 Matej Korman. All rights reserved.
+*/
+
+/* Posts */
+"posts_navigation_bar_title" = "Posts";
+
+/* PostsFetcherError */
+"posts_fetcher_url_creation_failure" = "Error creating URL.";
+"posts_fetcher_data_unwrapping_failure" = "Error unwrapping data.";
+"posts_fetcher_parsing_data_failure" = "Error parsing data.";
+
