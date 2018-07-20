@@ -13,6 +13,11 @@
 		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
 		F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */; };
+		F54EB77221022338001F2CA4 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EB77121022338001F2CA4 /* Album.swift */; };
+		F54EB77721022476001F2CA4 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EB77321022476001F2CA4 /* AlbumsViewController.swift */; };
+		F54EB77821022476001F2CA4 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EB77421022476001F2CA4 /* AlbumsView.swift */; };
+		F54EB77921022476001F2CA4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EB77521022476001F2CA4 /* PhotoCollectionViewCell.swift */; };
+		F54EB77A21022476001F2CA4 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54EB77621022476001F2CA4 /* AlbumTableViewCell.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -50,6 +55,11 @@
 		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
 		F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestHeader.swift; sourceTree = "<group>"; };
+		F54EB77121022338001F2CA4 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		F54EB77321022476001F2CA4 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		F54EB77421022476001F2CA4 /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		F54EB77521022476001F2CA4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		F54EB77621022476001F2CA4 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -107,6 +117,18 @@
 				D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F54EB76621022308001F2CA4 /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				F54EB77421022476001F2CA4 /* AlbumsView.swift */,
+				F54EB77321022476001F2CA4 /* AlbumsViewController.swift */,
+				F54EB77621022476001F2CA4 /* AlbumTableViewCell.swift */,
+				F54EB77521022476001F2CA4 /* PhotoCollectionViewCell.swift */,
+			);
+			name = Albums;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		F55050AF20FCB10D001788D0 /* Posts */ = {
@@ -171,6 +193,7 @@
 			children = (
 				F5E47A9720FC8797007184ED /* AppDelegate.swift */,
 				F55050C320FCFFE4001788D0 /* Tab Bar */,
+				F54EB76621022308001F2CA4 /* Albums */,
 				F55050AF20FCB10D001788D0 /* Posts */,
 			);
 			path = App;
@@ -235,6 +258,7 @@
 		F5E47ABE20FC8908007184ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F54EB77121022338001F2CA4 /* Album.swift */,
 				F55050B620FCB395001788D0 /* Post.swift */,
 			);
 			path = Models;
@@ -469,15 +493,20 @@
 				F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */,
 				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
 				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
+				F54EB77A21022476001F2CA4 /* AlbumTableViewCell.swift in Sources */,
+				F54EB77921022476001F2CA4 /* PhotoCollectionViewCell.swift in Sources */,
 				F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */,
 				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
+				F54EB77721022476001F2CA4 /* AlbumsViewController.swift in Sources */,
 				F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
+				F54EB77821022476001F2CA4 /* AlbumsView.swift in Sources */,
 				F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */,
+				F54EB77221022338001F2CA4 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
