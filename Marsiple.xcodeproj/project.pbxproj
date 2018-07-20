@@ -10,9 +10,9 @@
 		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
 		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
 		F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9A20FF5695002B5E9E /* MartianApi.swift */; };
+		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
 		F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */; };
-		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -47,9 +47,9 @@
 		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
 		F5072A9A20FF5695002B5E9E /* MartianApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApi.swift; sourceTree = "<group>"; };
+		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
 		F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestHeader.swift; sourceTree = "<group>"; };
-		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -287,6 +287,7 @@
 				F5E47A9120FC8797007184ED /* Frameworks */,
 				F5E47A9220FC8797007184ED /* Resources */,
 				3DC7F521E90BD2C65E6C752C /* [CP] Embed Pods Frameworks */,
+				48979DBF21021271009F024D /* Todo/Note warnings */,
 			);
 			buildRules = (
 			);
@@ -410,6 +411,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		48979DBF21021271009F024D /* Todo/Note warnings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Todo/Note warnings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:|NOTE:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
 		4F8689503003149450FBED84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
