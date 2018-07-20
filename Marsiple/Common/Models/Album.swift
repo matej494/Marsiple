@@ -9,9 +9,9 @@
 import UIKit
 
 struct Album {
-    let images: [UIImage]
+    let photos: [UIImage]
     
     init(images: [UIImage]) {
-        self.images = images
+        self.photos = images
     }
 }

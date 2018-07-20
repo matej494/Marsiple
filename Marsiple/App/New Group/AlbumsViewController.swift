@@ -23,12 +23,34 @@ class AlbumsViewController: UIViewController {
     }
 }
 
+extension AlbumsViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return albums.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as UITableViewCell
+        let photoCollectionView = PhotoCollectionViewController(photos: albums[indexPath.row].photos)
+        cell.addSubview(photoCollectionView.view)
+        photoCollectionView.view.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(70)
+        }
+        return cell
+    }
+}
+
 private extension AlbumsViewController {
     func setupView() {
         title = "Albums"
         view.backgroundColor = .white
         view.addSubview(albumsView)
-        albumsView.updateData(withAlbums: albums)
+        albumsView.tableView.dataSource = self
+        albumsView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         albumsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
