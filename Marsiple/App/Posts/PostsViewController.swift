@@ -27,6 +27,10 @@ class PostsViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+        
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 }
 
 extension PostsViewController: UITableViewDataSource {
@@ -35,9 +39,18 @@ extension PostsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        cell.updateCell(withPost: posts[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifier.postTableViewCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+        let post = posts[indexPath.row]
+        cell.updateCell(title: post.title, body: post.body)
         return cell
+    }
+}
+
+extension PostsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tabBarController?.tabBar.isHidden = true
+        let postDetailsViewController = PostDetailsViewController(post: posts[indexPath.row])
+        navigationController?.pushViewController(postDetailsViewController, animated: true)
     }
 }
 
@@ -51,6 +64,7 @@ private extension PostsViewController {
         view.backgroundColor = .white
         view.addSubview(postsView)
         postsView.tableView.dataSource = self
+        postsView.tableView.delegate = self
         postsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
