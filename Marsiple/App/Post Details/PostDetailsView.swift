@@ -37,6 +37,7 @@ private extension PostDetailsView {
     
     func setupPostDetailsView() {
         addSubview(postView)
+        postView.backgroundColor = .martianRed
         postView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
@@ -47,7 +48,7 @@ private extension PostDetailsView {
         tableView.backgroundColor = .martianLightGrey
         tableView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.top.equalTo(postView.snp.bottom).inset(-10)
+            $0.top.equalTo(postView.snp.bottom)
         }
     }
 }

@@ -10,12 +10,18 @@ import SnapKit
 
 class PostDetailsViewController: UIViewController {
     private let post: Post
-    private var comments = [Comment](repeating: Comment(email: "test.test@test.com", body: "Test comment..."), count: 10) //TODO: - Populate with real data.
+    private var comments = [Comment]()
     private let postDetailsView = PostDetailsView.autolayoutView()
     
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
+        DataFetcher.getComments(forPostId: post.id,
+                                success: { [weak self] comments in
+                                    self?.comments = comments
+                                    self?.postDetailsView.tableView.reloadData() },
+                                failure: { error in
+                                    print(error.errorDescription) })
         setupView()
         setupNavigationBar()
     }

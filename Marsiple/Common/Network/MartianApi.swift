@@ -15,4 +15,9 @@ struct MartianApi {
         static let contentTypeValue = "application/json"
         static let xAuthValue = "bWFydGlhbmFuZG1hY2hpbmU="
     }
+    
+    struct URLs {
+        static let posts = "posts"
+        static let comments = "comments"
+    }
 }
