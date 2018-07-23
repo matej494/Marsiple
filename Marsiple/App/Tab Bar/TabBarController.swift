@@ -11,9 +11,19 @@ import UIKit
 class TabBarController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
-        let viewControllerList = [PostsViewController(), AlbumsViewController()]
+        setupViews()
+    }
+        
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+private extension TabBarController {
+    func setupViews() {
         tabBar.barTintColor = .martianDark
         tabBar.tintColor = .white
+        let viewControllerList = [PostsViewController(), AlbumsViewController()]
         viewControllers = viewControllerList.map {
             let navigationController = UINavigationController(rootViewController: $0)
             navigationController.navigationBar.prefersLargeTitles = true
@@ -21,8 +31,4 @@ class TabBarController: UITabBarController {
             return navigationController
         }
     }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-    }
+}

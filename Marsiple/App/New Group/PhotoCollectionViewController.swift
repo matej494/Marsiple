@@ -9,11 +9,11 @@
 import UIKit
 
 class PhotoCollectionViewController: UICollectionViewController {
-    private let photos: [UIImage]
+    private let photos: [UIImage] // NOTE: Test code - will be replaced with URL
     
     init(photos: [UIImage]) {
         self.photos = photos
-        super.init(collectionViewLayout: UICollectionViewFlowLayout.init())
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
         setupCollectionView()
     }
     
@@ -41,7 +41,7 @@ private extension PhotoCollectionViewController {
     func setupCollectionView() {
         self.collectionView!.backgroundColor = .white
         self.collectionView!.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-        if let flowLayout = self.collectionView!.collectionViewLayout as? UICollectionViewFlowLayout {
+        if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
             flowLayout.minimumInteritemSpacing = 10
             flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)

@@ -16,7 +16,6 @@ class PostsViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         setupView()
-        setupNavigationBar()
         postsFetcher.getPosts(success: { [weak self] posts in
                                 self?.posts = posts
                                 self?.postsView.tableView.reloadData() },
@@ -42,10 +41,6 @@ extension PostsViewController: UITableViewDataSource {
 }
 
 private extension PostsViewController {
-    func setupNavigationBar() {
-        navigationItem.title = LocalizationKey.Posts.navigationBarTitle.localized()
-    }
-    
     func setupView() {
         title = LocalizationKey.Posts.navigationBarTitle.localized()
         view.backgroundColor = .white

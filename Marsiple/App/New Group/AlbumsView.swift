@@ -29,6 +29,7 @@ private extension AlbumsView {
     func setupTableView() {
         addSubview(tableView)
         tableView.backgroundColor = .white
+        tableView.rowHeight = 70
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

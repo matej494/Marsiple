@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Album {
+struct Album { //TODO: - Setup properties to correspond to Json object from api
     let photos: [UIImage]
     
     init(images: [UIImage]) {
