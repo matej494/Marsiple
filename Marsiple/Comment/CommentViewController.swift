@@ -9,9 +9,11 @@
 import SnapKit
 
 class CommentViewController: UIViewController {
+    private let postId: Int
     private let commentView = CommentView.autolayoutView()
     
-    init() {
+    init(postId: Int) {
+        self.postId = postId
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupNavigationBar()
@@ -23,14 +25,16 @@ class CommentViewController: UIViewController {
 }
 
 private extension CommentViewController {
-    @objc func saveButtonTapped() { // TODO: Implement posting comment on-line
+    @objc func saveButtonTapped() {
+        let comment = Comment(id: 1, name: "John Doe", email: "johndoe@gmail.com", body: commentView.text, postId: postId) // NOTE: - Id is set to 1, but it will be supplied by API. There is no name and email (possible upgrade when registration is implemented).
+        MartianApiManager.postComment(comment: comment)
         navigationController?.popViewController(animated: true)
     }
 }
 
 private extension CommentViewController {
     func setupNavigationBar() {
-        navigationItem.title = "Comment"  // TODO: Localize
+        navigationItem.title = LocalizationKey.Comment.navigationBarTitle.localized()
         let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveButton
     }
