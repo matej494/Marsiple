@@ -9,6 +9,10 @@
 import SnapKit
 
 class CommentView: UIView {
+    public var text: String {
+        return textView.text
+    }
+    
     private let maxCharacterCount = 200
     private let textView = UITextView.autolayoutView()
     private let keyboardSizedView = UIView.autolayoutView()

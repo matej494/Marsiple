@@ -16,18 +16,16 @@ class PostDetailsViewController: UIViewController {
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
-        DataFetcher.getComments(forPostId: post.id,
-                                success: { [weak self] comments in
-                                    self?.comments = comments
-                                    self?.postDetailsView.tableView.reloadData() },
-                                failure: { error in
-                                    print(error.errorDescription) })
         setupView()
         setupNavigationBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateComments()
     }
 }
 
@@ -50,7 +48,7 @@ extension PostDetailsViewController: UITableViewDataSource {
 
 private extension PostDetailsViewController {
     @objc func commentButtonTapped() {
-        let commentView = CommentViewController()
+        let commentView = CommentViewController(postId: post.id)
         navigationController?.pushViewController(commentView, animated: true)
     }
 }
@@ -71,5 +69,14 @@ private extension PostDetailsViewController {
         postDetailsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    func updateComments() {
+        MartianApiManager.getComments(forPostId: post.id,
+                                success: { [weak self] comments in
+                                    self?.comments = comments
+                                    self?.postDetailsView.tableView.reloadData() },
+                                failure: { error in
+                                    print(error.errorDescription) })
     }
 }

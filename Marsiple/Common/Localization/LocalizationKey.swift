@@ -22,4 +22,8 @@ struct LocalizationKey {
     struct PostDetails {
         static let navigationBarTitle = "post_details-navigation_bar_title"
     }
+    
+    struct Comment {
+        static let navigationBarTitle = "comment_navigation_bar_title"
+    }
 }

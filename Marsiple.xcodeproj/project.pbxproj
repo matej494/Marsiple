@@ -20,7 +20,7 @@
 		F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072ABB2101FDB5002B5E9E /* Comment.swift */; };
 		F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */; };
 		F534E9402105F09D00D3F1CE /* DataFetcherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */; };
-		F534E9422105F35200D3F1CE /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9412105F35200D3F1CE /* DataFetcher.swift */; };
+		F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9412105F35200D3F1CE /* MartianApiManager.swift */; };
 		F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E94421063FD300D3F1CE /* CommentViewController.swift */; };
 		F534E9472106407A00D3F1CE /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9462106407A00D3F1CE /* CommentView.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
@@ -66,7 +66,7 @@
 		F5072ABB2101FDB5002B5E9E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReuseIdentifier.swift; sourceTree = "<group>"; };
 		F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherError.swift; sourceTree = "<group>"; };
-		F534E9412105F35200D3F1CE /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		F534E9412105F35200D3F1CE /* MartianApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApiManager.swift; sourceTree = "<group>"; };
 		F534E94421063FD300D3F1CE /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		F534E9462106407A00D3F1CE /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		F5E47ABF20FC890E007184ED /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F534E9412105F35200D3F1CE /* DataFetcher.swift */,
+				F534E9412105F35200D3F1CE /* MartianApiManager.swift */,
 				F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */,
 				F5072A9A20FF5695002B5E9E /* MartianApi.swift */,
 				F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */,
@@ -493,7 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5072ABA2101F0B3002B5E9E /* PostDetailsTableViewCell.swift in Sources */,
-				F534E9422105F35200D3F1CE /* DataFetcher.swift in Sources */,
+				F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */,
 				F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */,
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
 				F534E9472106407A00D3F1CE /* CommentView.swift in Sources */,
