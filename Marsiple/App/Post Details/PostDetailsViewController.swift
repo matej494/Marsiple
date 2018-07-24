@@ -48,7 +48,6 @@ private extension PostDetailsViewController {
     }
     
     func setupView() {
-        view.backgroundColor = .martianLightGrey
         view.addSubview(postDetailsView)
         view.backgroundColor = .martianLightGrey
         postDetailsView.updatePostProperties(title: post.title, body: post.body)
