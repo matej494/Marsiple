@@ -33,11 +33,14 @@ private extension DataFetcher {
                                            failure: @escaping (LocalizedError) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.addValue(MartianApi.Headers.contentTypeValue, forHTTPHeaderField: HTTPRequestHeader.contentType)
+        request.addValue(MartianApi.Headers.defaultContentType, forHTTPHeaderField: HTTPRequestHeader.contentType)
         request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
         
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                return DispatchQueue.main.async { failure(DataFetcherError.generic(error)) }
+            }
             do {
                 guard let unwrappedData = data
                     else { return DispatchQueue.main.async { failure(DataFetcherError.dataUnwrapingFailure) } }
