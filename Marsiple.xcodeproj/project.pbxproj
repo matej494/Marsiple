@@ -32,6 +32,7 @@
 		F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BD20FCF84E001788D0 /* LocalizationKey.swift */; };
 		F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BF20FCF982001788D0 /* String-Marsiple.swift */; };
 		F55050C520FD0181001788D0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C420FD0181001788D0 /* TabBarController.swift */; };
+		F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -78,6 +79,7 @@
 		F55050BD20FCF84E001788D0 /* LocalizationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKey.swift; sourceTree = "<group>"; };
 		F55050BF20FCF982001788D0 /* String-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Marsiple.swift"; sourceTree = "<group>"; };
 		F55050C420FD0181001788D0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Marsiple.swift"; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */,
 				F55050BF20FCF982001788D0 /* String-Marsiple.swift */,
 				F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */,
+				F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
+				F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */,
 				F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
