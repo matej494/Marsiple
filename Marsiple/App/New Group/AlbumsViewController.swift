@@ -10,12 +10,11 @@ import SnapKit
 
 class AlbumsViewController: UIViewController {
     private let albums = [Album](repeating: Album(images: [#imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4"), #imageLiteral(resourceName: "Image5"), #imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4")]), count: 10) // TODO: Popoulate with real data
-    private var photoCollectionViewControllers = [PhotoCollectionViewController]()
+    private lazy var photoCollectionViewControllers = populatePhotoCollectionViewControllers()
     private let albumsView = AlbumsView.autolayoutView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        populatePhotoCollectionViewControllers()
         setupView()
     }
     
@@ -65,10 +64,12 @@ private extension AlbumsViewController {
         }
     }
     
-    func populatePhotoCollectionViewControllers() {
+    func populatePhotoCollectionViewControllers() -> [PhotoCollectionViewController] {
+        var viewControllers = [PhotoCollectionViewController]()
         albums.forEach {
             let photoCollectionViewController = PhotoCollectionViewController(photos: $0.photos)
-            photoCollectionViewControllers.append(photoCollectionViewController)
+            viewControllers.append(photoCollectionViewController)
         }
+        return viewControllers
     }
 }
