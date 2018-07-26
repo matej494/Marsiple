@@ -9,13 +9,17 @@
 import SnapKit
 
 class AlbumsViewController: UIViewController {
-    private let albums = [Album](repeating: Album(images: [#imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4"), #imageLiteral(resourceName: "Image5"), #imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4")]), count: 10) // TODO: Popoulate with real data
+    private var albums = [Album]()
     private var photoCollectionViewControllers = [PhotoCollectionViewController]()
     private let albumsView = AlbumsView.autolayoutView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        populatePhotoCollectionViewControllers()
+        DataFetcher.getAlbums(success: { [weak self] albums in
+                                self?.albums = albums
+                                self?.albumsView.tableView.reloadData() },
+                              failure: { error in
+                                print(error.errorDescription) })
         setupView()
     }
     
@@ -41,6 +45,9 @@ extension AlbumsViewController: UITableViewDataSource {
 
 extension AlbumsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if photoCollectionViewControllers.count <= indexPath.row {
+            addPhotoCollectionViewController(index: indexPath.row)
+        }
         cell.addSubview(photoCollectionViewControllers[indexPath.row].view)
         photoCollectionViewControllers[indexPath.row].view.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -65,10 +72,8 @@ private extension AlbumsViewController {
         }
     }
     
-    func populatePhotoCollectionViewControllers() {
-        albums.forEach {
-            let photoCollectionViewController = PhotoCollectionViewController(photos: $0.photos)
-            photoCollectionViewControllers.append(photoCollectionViewController)
-        }
+    func addPhotoCollectionViewController(index: Int) {
+        let photoCollectionViewController = PhotoCollectionViewController(albumId: albums[index].id)
+        photoCollectionViewControllers.append(photoCollectionViewController)
     }
 }
