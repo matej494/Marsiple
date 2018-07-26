@@ -30,13 +30,7 @@ class MartianApiManager {
                             .appendingPathComponent("\(comment.postId)")
                             .appendingPathComponent(MartianApi.URLs.comments)
             else { return }
-        let json: [String: String] = ["name": comment.name, "email": comment.email, "body": comment.body]
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
-            postData(data: jsonData, url: url)
-        } catch {
-            print("Error serializing Json")
-        }
+        postData(data: comment, url: url)
     }
 }
 
@@ -45,6 +39,9 @@ private extension MartianApiManager {
         let request = setupRequest(url: url, method: HTTPRequestMethod.get)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                return DispatchQueue.main.async { failure(DataFetcherError.generic(error)) }
+            }
             do {
                 guard let unwrappedData = data
                     else { return DispatchQueue.main.async { failure(DataFetcherError.dataUnwrapingFailure) } }
@@ -57,9 +54,9 @@ private extension MartianApiManager {
         task.resume()
     }
     
-    static func postData(data: Data, url: URL) {
-        let request = setupRequest(url: url, method: HTTPRequestMethod.post, body: data)
-        
+    static func postData<DataType: Codable>(data: DataType, url: URL) {
+        guard let json = encodeData(data: data) else { return }
+        let request = setupRequest(url: url, method: HTTPRequestMethod.post, body: json)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -79,5 +76,14 @@ private extension MartianApiManager {
         request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
         request.httpBody = body
         return request
+    }
+    
+    static func encodeData<DataType: Codable>(data: DataType) -> Data? {
+        do {
+            return try JSONEncoder().encode(data)
+        } catch {
+            print("Error encoding data.")
+            return nil
+        }
     }
 }

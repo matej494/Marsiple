@@ -26,7 +26,12 @@ class CommentViewController: UIViewController {
 
 private extension CommentViewController {
     @objc func saveButtonTapped() {
-        let comment = Comment(id: 1, name: "John Doe", email: "johndoe@gmail.com", body: commentView.text, postId: postId) // NOTE: - Id is set to 1, but it will be supplied by API. There is no name and email (possible upgrade when registration is implemented).
+        // NOTE: - Id is set to 1, but it won't be encoded, so API will supply it. There is no name and email (possible upgrade when registration is implemented).
+        let comment = Comment(id: 1,
+                              name: "John Doe",
+                              email: "johndoe@gmail.com",
+                              body: commentView.text,
+                              postId: postId)
         MartianApiManager.postComment(comment: comment)
         navigationController?.popViewController(animated: true)
     }
