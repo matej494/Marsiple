@@ -21,8 +21,7 @@ class TabBarController: UITabBarController {
 
 private extension TabBarController {
     func setupViews() {
-        tabBar.barTintColor = .martianDark
-        tabBar.tintColor = .white
+        setupTabBar()
         let viewControllerList = [PostsViewController(), AlbumsViewController()]
         viewControllers = viewControllerList.map {
             let navigationController = UINavigationController(rootViewController: $0)
@@ -30,5 +29,10 @@ private extension TabBarController {
             navigationController.navigationBar.barTintColor = .martianGrey
             return navigationController
         }
+    }
+    
+    func setupTabBar() {
+        tabBar.barTintColor = .martianDark
+        tabBar.tintColor = .white
     }
 }
