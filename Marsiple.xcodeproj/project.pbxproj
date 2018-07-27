@@ -19,6 +19,8 @@
 		F5072ABA2101F0B3002B5E9E /* PostDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB92101F0B3002B5E9E /* PostDetailsTableViewCell.swift */; };
 		F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072ABB2101FDB5002B5E9E /* Comment.swift */; };
 		F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */; };
+		F534E9402105F09D00D3F1CE /* DataFetcherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */; };
+		F534E9422105F35200D3F1CE /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9412105F35200D3F1CE /* DataFetcher.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -28,7 +30,6 @@
 		F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BD20FCF84E001788D0 /* LocalizationKey.swift */; };
 		F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BF20FCF982001788D0 /* String-Marsiple.swift */; };
 		F55050C520FD0181001788D0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C420FD0181001788D0 /* TabBarController.swift */; };
-		F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C820FE05AF001788D0 /* PostsFetcher.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -62,6 +63,8 @@
 		F5072AB92101F0B3002B5E9E /* PostDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		F5072ABB2101FDB5002B5E9E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReuseIdentifier.swift; sourceTree = "<group>"; };
+		F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherError.swift; sourceTree = "<group>"; };
+		F534E9412105F35200D3F1CE /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		F55050BD20FCF84E001788D0 /* LocalizationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKey.swift; sourceTree = "<group>"; };
 		F55050BF20FCF982001788D0 /* String-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Marsiple.swift"; sourceTree = "<group>"; };
 		F55050C420FD0181001788D0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		F55050C820FE05AF001788D0 /* PostsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFetcher.swift; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -267,7 +269,8 @@
 		F5E47ABF20FC890E007184ED /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F55050C820FE05AF001788D0 /* PostsFetcher.swift */,
+				F534E9412105F35200D3F1CE /* DataFetcher.swift */,
+				F534E93F2105F09D00D3F1CE /* DataFetcherError.swift */,
 				F5072A9A20FF5695002B5E9E /* MartianApi.swift */,
 				F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */,
 				F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */,
@@ -476,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5072ABA2101F0B3002B5E9E /* PostDetailsTableViewCell.swift in Sources */,
+				F534E9422105F35200D3F1CE /* DataFetcher.swift in Sources */,
 				F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */,
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
 				F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */,
@@ -485,10 +489,10 @@
 				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
 				F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */,
 				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
+				F534E9402105F09D00D3F1CE /* DataFetcherError.swift in Sources */,
 				F5072AB62101E62C002B5E9E /* PostDetailsView.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
 				F5072AB82101EB1E002B5E9E /* TitleAndBodyView.swift in Sources */,
-				F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */,
 				F5072AB42101E51B002B5E9E /* PostDetailsViewController.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,

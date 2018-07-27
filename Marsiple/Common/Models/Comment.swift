@@ -8,13 +8,18 @@
 
 import Foundation
 
-class Comment {
-    // TODO: - Setup properties to correspond to Json object from api
+class Comment: Codable {
+    let id: Int
+    let name: String
     let email: String
     let body: String
+    let postId: Int
     
-    init(email: String, body: String) {
+    init(id: Int, name: String, email: String, body: String, postId: Int) {
+        self.id = id
+        self.name = name
         self.email = email
         self.body = body
+        self.postId = postId
     }
 }
