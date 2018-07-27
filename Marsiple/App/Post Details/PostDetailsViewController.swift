@@ -10,8 +10,14 @@ import SnapKit
 
 class PostDetailsViewController: UIViewController {
     private let post: Post
-    private var comments = [Comment](repeating: Comment(email: "test.test@test.com", body: "Test comment..."), count: 10) //TODO: - Populate with real data.
+    // TODO: - Populate with real data.
+    private var comments = [Comment](repeating: Comment(email: "test.test@test.com", body: "Test comment..."), count: 10)
     private let postDetailsView = PostDetailsView.autolayoutView()
+    
+    override var hidesBottomBarWhenPushed: Bool {
+        get { return true }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
     
     init(post: Post) {
         self.post = post

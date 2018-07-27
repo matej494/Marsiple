@@ -9,18 +9,16 @@
 import UIKit
 
 class TitleAndBodyView: UIView {
+    var titleLabelFontSize: CGFloat = 20 {
+        didSet { titleLabel.font = .systemFont(ofSize: titleLabelFontSize) }
+    }
+    
+    var bodyLabelFontSize: CGFloat = 15 {
+        didSet { bodyLabel.font = .systemFont(ofSize: bodyLabelFontSize) }
+    }
+    
     private let titleLabel = UILabel.autolayoutView()
     private let bodyLabel = UILabel.autolayoutView()
-    var titleLabelFontSize: CGFloat = 20 {
-        didSet {
-            titleLabel.font = .systemFont(ofSize: titleLabelFontSize)
-        }
-    }
-    var bodyLabelFontSize: CGFloat = 15 {
-        didSet {
-            bodyLabel.font = .systemFont(ofSize: bodyLabelFontSize)
-        }
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +59,7 @@ private extension TitleAndBodyView {
         addSubview(bodyLabel)
         bodyLabel.textColor = .black
         bodyLabel.textAlignment = .left
-        bodyLabel.font = .systemFont(ofSize: 15)
+        bodyLabel.font = .systemFont(ofSize: bodyLabelFontSize)
         bodyLabel.numberOfLines = 0
         bodyLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(bodyLabelFontSize)

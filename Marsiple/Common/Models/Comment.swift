@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Comment { //TODO: - Setup properties to correspond to Json object from api
+class Comment {
+    // TODO: - Setup properties to correspond to Json object from api
     let email: String
     let body: String
     

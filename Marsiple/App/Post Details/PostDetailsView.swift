@@ -9,8 +9,8 @@
 import SnapKit
 
 class PostDetailsView: UIView {
-    private let postView = TitleAndBodyView.autolayoutView()
     let tableView = UITableView.autolayoutView()
+    private let postView = TitleAndBodyView.autolayoutView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
