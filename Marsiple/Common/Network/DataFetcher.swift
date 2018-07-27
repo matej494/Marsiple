@@ -41,6 +41,7 @@ private extension DataFetcher {
             if let error = error {
                 return DispatchQueue.main.async { failure(DataFetcherError.generic(error)) }
             }
+            
             do {
                 guard let unwrappedData = data
                     else { return DispatchQueue.main.async { failure(DataFetcherError.dataUnwrapingFailure) } }
