@@ -54,7 +54,7 @@ private extension PostDetailsViewController {
     }
     
     func setupView() {
-        view.backgroundColor = .martianLightGrey
+        hidesBottomBarWhenPushed = true
         view.addSubview(postDetailsView)
         view.backgroundColor = .martianLightGrey
         postDetailsView.updatePostProperties(title: post.title, body: post.body)
