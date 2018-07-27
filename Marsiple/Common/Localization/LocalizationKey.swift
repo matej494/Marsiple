@@ -18,4 +18,8 @@ struct LocalizationKey {
         static let dataUnwrapingFailure = "posts_fetcher_data_unwrapping_failure"
         static let parsingDataFailure = "posts_fetcher_parsing_data_failure"
     }
+    
+    struct PostDetails {
+        static let navigationBarTitle = "post_details-navigation_bar_title"
+    }
 }
