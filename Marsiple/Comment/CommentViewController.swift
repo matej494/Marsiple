@@ -31,8 +31,8 @@ private extension CommentViewController {
 
 private extension CommentViewController {
     func setupNavigationBar() {
-        navigationItem.title = "Comment"  // TODO: Localize
-        let saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(saveButtonTapped))
+        navigationItem.title = LocalizationKey.Comment.navigationBarTitle.localized()
+        let saveButton = UIBarButtonItem.createSaveItem(target: self, action: #selector(saveButtonTapped))
         navigationItem.rightBarButtonItem = saveButton
     }
     
