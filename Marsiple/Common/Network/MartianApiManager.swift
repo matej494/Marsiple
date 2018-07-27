@@ -24,13 +24,13 @@ class MartianApiManager {
         getData(url: url, success: success, failure: failure)
     }
     
-    static func postComment(comment: Comment) {
+    static func postComment(comment: Comment, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
         guard let url = MartianApi.url?
                             .appendingPathComponent(MartianApi.URLs.posts)
                             .appendingPathComponent("\(comment.postId)")
                             .appendingPathComponent(MartianApi.URLs.comments)
             else { return }
-        postData(data: comment, url: url)
+        postData(data: comment, url: url, success: success, failure: failure)
     }
 }
 
@@ -54,7 +54,7 @@ private extension MartianApiManager {
         task.resume()
     }
     
-    static func postData<DataType: Codable>(data: DataType, url: URL) {
+    static func postData<DataType: Codable>(data: DataType, url: URL, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
         guard let json = encodeData(data: data) else { return }
         let request = setupRequest(url: url, method: HTTPRequestMethod.post, body: json)
         let session = URLSession.shared
@@ -62,8 +62,12 @@ private extension MartianApiManager {
             if let error = error {
                 print(error.localizedDescription)
             }
-            if let response = response {
-                print(response)
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == HTTPResponseCodes.code201.rawValue {
+                    return DispatchQueue.main.async { success(HTTPResponseCodes.getMessage(forCode: httpResponse.statusCode)) }
+                } else {
+                    return DispatchQueue.main.async { failure(HTTPResponseCodes.getMessage(forCode: httpResponse.statusCode)) }
+                }
             }
         }
         task.resume()

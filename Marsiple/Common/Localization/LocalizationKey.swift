@@ -25,5 +25,26 @@ struct LocalizationKey {
     
     struct Comment {
         static let navigationBarTitle = "comment_navigation_bar_title"
+        static let successAlertTitle = "succes_alert_title"
+        static let successAlertMessage = "succes_alert_message"
+        static let failureAlertTitle = "failure_alert_title"
+        static let failureAlertMessage = "failure_alert_message"
+        static let okAlertAction = "ok_alert_action"
+        static let cancelAlertAction = "cancel_alert_action"
+        static let stayHereAlertAction = "stay_here_alert_action"
+    }
+    
+    struct HTTPResponseCodes {
+        static let code200 = "http_response_code_200"
+        static let code201 = "http_response_code_201"
+        static let code204 = "http_response_code_204"
+        static let code400 = "http_response_code_400"
+        static let code401 = "http_response_code_401"
+        static let code403 = "http_response_code_403"
+        static let code404 = "http_response_code_404"
+        static let code405 = "http_response_code_405"
+        static let code406 = "http_response_code_406"
+        static let code415 = "http_response_code_415"
+        static let unknownCode = "http_response_code_unknown_code"
     }
 }
