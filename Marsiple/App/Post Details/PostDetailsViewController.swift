@@ -57,8 +57,7 @@ private extension PostDetailsViewController {
 private extension PostDetailsViewController {
     func setupNavigationBar() {
         navigationItem.title = LocalizationKey.PostDetails.navigationBarTitle.localized()
-        let commentButton = UIBarButtonItem.createCommentItem(target: self, action: #selector(commentButtonTapped))
-        navigationItem.rightBarButtonItem = commentButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem.commentItem(target: self, action: #selector(commentButtonTapped))
     }
     
     func setupView() {

@@ -9,11 +9,11 @@
 import UIKit
 
 extension UIBarButtonItem {
-    static func createCommentItem(target: Any, action: Selector) -> UIBarButtonItem {
+    static func commentItem(target: Any, action: Selector) -> UIBarButtonItem {
         return UIBarButtonItem(title: LocalizationKey.BarButtonItem.commentTitle.localized(), style: .plain, target: target, action: action)
     }
     
-    static func createSaveItem(target: Any, action: Selector) -> UIBarButtonItem {
+    static func saveItem(target: Any, action: Selector) -> UIBarButtonItem {
         return UIBarButtonItem(title: LocalizationKey.BarButtonItem.saveTitle.localized(), style: .done, target: target, action: action)
     }
 }
