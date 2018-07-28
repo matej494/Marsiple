@@ -62,11 +62,12 @@ private extension MartianApiManager {
             if let error = error {
                 print(error.localizedDescription)
             }
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == HTTPResponseCodes.code201.rawValue {
-                    return DispatchQueue.main.async { success(HTTPResponseCodes.getMessage(forCode: httpResponse.statusCode)) }
+            if let httpResponse = response as? HTTPURLResponse,
+                let message = HTTPResponseCode(rawValue: httpResponse.statusCode)?.message {
+                if httpResponse.statusCode == HTTPResponseCode.code201.rawValue {
+                    return DispatchQueue.main.async { success(message) }
                 } else {
-                    return DispatchQueue.main.async { failure(HTTPResponseCodes.getMessage(forCode: httpResponse.statusCode)) }
+                    return DispatchQueue.main.async { failure(message) }
                 }
             }
         }
