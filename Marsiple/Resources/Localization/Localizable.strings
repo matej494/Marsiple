@@ -15,4 +15,11 @@
 "posts_fetcher_parsing_data_failure" = "Error parsing data.";
 
 /* Post Details */
-"post_details-navigation_bar_title" = "Post details";
+"post_details_navigation_bar_title" = "Post details";
+
+/* Comment */
+"comment_navigation_bar_title" = "Comment";
+
+/* BarButtonItems */
+"save_bar_button_title" = "Save";
+"comment_bar_button_title" = "Comment";

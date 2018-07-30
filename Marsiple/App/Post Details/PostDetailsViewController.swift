@@ -49,14 +49,20 @@ extension PostDetailsViewController: UITableViewDataSource {
 }
 
 private extension PostDetailsViewController {
+    @objc func commentButtonTapped() {
+        navigationController?.pushViewController(CommentViewController(), animated: true)
+    }
+}
+
+private extension PostDetailsViewController {
     func setupNavigationBar() {
         navigationItem.title = LocalizationKey.PostDetails.navigationBarTitle.localized()
+        navigationItem.rightBarButtonItem = UIBarButtonItem.commentItem(target: self, action: #selector(commentButtonTapped))
     }
     
     func setupView() {
         view.backgroundColor = .martianLightGrey
         view.addSubview(postDetailsView)
-        view.backgroundColor = .martianLightGrey
         postDetailsView.updatePostProperties(title: post.title, body: post.body)
         postDetailsView.tableView.dataSource = self
         postDetailsView.tableView.register(PostDetailsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier.postDetailsTableViewCell)
