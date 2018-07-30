@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     private let imageView = UIImageView.autolayoutView()
@@ -22,14 +23,17 @@ class PhotoCollectionViewCell: UICollectionViewCell {
 }
 
 extension PhotoCollectionViewCell {
-    func updateCell(withImage image: UIImage) {
-        imageView.image = image
+    func updateCell(withURL url: String) {
+        if let url = URL(string: url) {
+            imageView.kf.setImage(with: url)
+        }
     }
 }
 
 private extension PhotoCollectionViewCell {
     func setupImageView() {
         contentView.addSubview(imageView)
+        imageView.kf.indicatorType = .activity
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.snp.makeConstraints {

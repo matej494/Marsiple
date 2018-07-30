@@ -49,27 +49,8 @@ struct DataFetcher {
             else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
         getData(url: url, success: success, failure: failure)
     }
-    
-    static func getThumbnail(withUrl url: String, success: @escaping (UIImage) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = URL(string: url)
-            else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                return DispatchQueue.main.async { failure(DataFetcherError.generic(error)) }
-            }
-            if let data = data {
-                if let image = UIImage(data: data) {
-                    return DispatchQueue.main.async { success(image) }
-                } else {
-                    return DispatchQueue.main.async { failure(DataFetcherError.parsingDataFailure) }
-                }
-            } else {
-                return DispatchQueue.main.async { failure(DataFetcherError.dataUnwrapingFailure) }
-            }
-        }
-        task.resume()
-    }
 }
+
 private extension DataFetcher {
     static func getData<DataType: Codable>(url: URL, success: @escaping ([DataType]) -> Void, failure: @escaping (LocalizedError) -> Void) {
         let request = setupRequest(url: url)
