@@ -23,14 +23,6 @@ class Comment: Codable {
         self.postId = postId
     }
     
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case email
-        case body
-        case postId
-    }
-    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
