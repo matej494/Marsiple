@@ -11,13 +11,14 @@ import UIKit
 class PhotoCollectionViewController: UICollectionViewController {
     private let albumId: Int
     private var photos = [Photo]()
-    private let activityIndicatorView = UIActivityIndicatorView.autolayoutView()
     
     init(albumId: Int) {
         self.albumId = albumId
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         DataFetcher.getPhotos(albumId: albumId,
-                              success: { [weak self] photos in self?.photos = photos },
+                              success: { [weak self] photos in
+                                self?.photos = photos
+                                self?.collectionView?.reloadData() },
                               failure: { error in print(error.errorDescription) })
         setupView()
     }

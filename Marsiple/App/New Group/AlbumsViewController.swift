@@ -40,7 +40,7 @@ extension AlbumsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as UITableViewCell
-        cell.addSubview(photoCollectionViewControllers[indexPath.row].view)
+        cell.contentView.addSubview(photoCollectionViewControllers[indexPath.row].view)
         photoCollectionViewControllers[indexPath.row].view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
