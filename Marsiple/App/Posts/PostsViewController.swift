@@ -11,16 +11,15 @@ import SnapKit
 class PostsViewController: UIViewController {
     private var posts: [Post] = []
     private let postsView = PostsView.autolayoutView()
-    private let postsFetcher = PostsFetcher()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupNavigationBar()
-        postsFetcher.getPosts(success: { [weak self] posts in
+        DataFetcher.getPosts(success: { [weak self] posts in
                                 self?.posts = posts
                                 self?.postsView.tableView.reloadData() },
-                              failure: { error in
+                             failure: { error in
                                 print(error.errorDescription) })
     }
     
@@ -35,9 +34,17 @@ extension PostsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        cell.updateCell(withPost: posts[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifier.postTableViewCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+        let post = posts[indexPath.row]
+        cell.updateCell(title: post.title, body: post.body)
         return cell
+    }
+}
+
+extension PostsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postDetailsViewController = PostDetailsViewController(post: posts[indexPath.row])
+        navigationController?.pushViewController(postDetailsViewController, animated: true)
     }
 }
 
@@ -51,6 +58,7 @@ private extension PostsViewController {
         view.backgroundColor = .white
         view.addSubview(postsView)
         postsView.tableView.dataSource = self
+        postsView.tableView.delegate = self
         postsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
