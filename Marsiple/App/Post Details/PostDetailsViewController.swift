@@ -48,16 +48,14 @@ extension PostDetailsViewController: UITableViewDataSource {
 
 private extension PostDetailsViewController {
     @objc func commentButtonTapped() {
-        let commentView = CommentViewController(postId: post.id)
-        navigationController?.pushViewController(commentView, animated: true)
+        navigationController?.pushViewController(CommentViewController(postId: post.id), animated: true)
     }
 }
 
 private extension PostDetailsViewController {
     func setupNavigationBar() {
         navigationItem.title = LocalizationKey.PostDetails.navigationBarTitle.localized()
-        let commentButton = UIBarButtonItem(title: "Comment", style: .plain, target: self, action: #selector(commentButtonTapped))
-        navigationItem.rightBarButtonItem = commentButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem.commentItem(target: self, action: #selector(commentButtonTapped))
     }
     
     func setupView() {
