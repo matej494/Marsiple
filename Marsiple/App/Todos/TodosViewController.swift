@@ -42,15 +42,18 @@ extension TodosViewController: UITableViewDataSource {
 
 extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var removedTodo = todos[indexPath.section].remove(at: indexPath.row)
-        removedTodo.completed = !removedTodo.completed
-        todos[1 - indexPath.section].insert(removedTodo, at: todos[1 - indexPath.section].count)
-        tableView.reloadData()
+        let finishIndexPath = IndexPath(row: todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        tableView.performBatchUpdates({
+            var removedTodo = todos[indexPath.section].remove(at: indexPath.row)
+            removedTodo.completed = !removedTodo.completed
+            todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
+            tableView.moveRow(at: indexPath, to: finishIndexPath) },
+                                      completion: { _ in tableView.reloadData() })
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? nil : LocalizationKey.Todos.completedSectionHeader.localized()
-    }
+    }    
 }
 
 private extension TodosViewController {
@@ -66,8 +69,8 @@ private extension TodosViewController {
     }
     
     func setupTodos() -> [[Todo]] {
-        let uncompleated = [Todo](repeating: Todo(id: 1, title: "Todo 1", completed: false, userId: 1), count: 10)
-        let compleated = [Todo](repeating: Todo(id: 1, title: "Todo 2", completed: true, userId: 1), count: 10)
-        return [uncompleated, compleated]
+        let uncompleted = [Todo](repeating: Todo(id: 1, title: "Todo 1", completed: false, userId: 1), count: 10)
+        let completed = [Todo](repeating: Todo(id: 1, title: "Todo 2", completed: true, userId: 1), count: 10)
+        return [uncompleted, completed]
     }
 }
