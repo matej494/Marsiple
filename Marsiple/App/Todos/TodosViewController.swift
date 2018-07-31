@@ -53,7 +53,18 @@ extension TodosViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? nil : LocalizationKey.Todos.completedSectionHeader.localized()
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            todos[indexPath.section].remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }
 
 private extension TodosViewController {
