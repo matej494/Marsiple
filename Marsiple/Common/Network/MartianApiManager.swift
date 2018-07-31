@@ -11,7 +11,7 @@ import Foundation
 class MartianApiManager {
     static func getPosts(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let url = MartianApi.url?.appendingPathComponent(MartianApi.URLs.posts)
-            else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
+            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
         getData(url: url, success: success, failure: failure)
     }
     
@@ -20,11 +20,11 @@ class MartianApiManager {
                             .appendingPathComponent(MartianApi.URLs.posts)
                             .appendingPathComponent("\(id)")
                             .appendingPathComponent(MartianApi.URLs.comments)
-            else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
+            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
         getData(url: url, success: success, failure: failure)
     }
     
-    static func postComment(comment: Comment, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
+    static func postComment(comment: Comment, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let url = MartianApi.url?
                             .appendingPathComponent(MartianApi.URLs.posts)
                             .appendingPathComponent("\(comment.postId)")
@@ -40,35 +40,35 @@ private extension MartianApiManager {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                return DispatchQueue.main.async { failure(DataFetcherError.generic(error)) }
+                return DispatchQueue.main.async { failure(DataManagerError.generic(error)) }
             }
             do {
                 guard let unwrappedData = data
-                    else { return DispatchQueue.main.async { failure(DataFetcherError.dataUnwrapingFailure) } }
+                    else { return DispatchQueue.main.async { failure(DataManagerError.dataUnwrapingFailure) } }
                 let posts = try JSONDecoder().decode([DataType].self, from: unwrappedData)
                 DispatchQueue.main.async { success(posts) }
             } catch {
-                DispatchQueue.main.async { failure(DataFetcherError.parsingDataFailure) }
+                DispatchQueue.main.async { failure(DataManagerError.parsingDataFailure) }
             }
         }
         task.resume()
     }
     
-    static func postData<DataType: Codable>(data: DataType, url: URL, success: @escaping (String) -> Void, failure: @escaping (String) -> Void) {
-        guard let json = encodeData(data: data) else { return }
+    static func postData<DataType: Codable>(data: DataType, url: URL, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let json = encodeData(data: data)
+            else { return DispatchQueue.main.async { failure(DataManagerError.dataEncodingFailure) } }
         let request = setupRequest(url: url, method: HTTPRequestMethod.post, body: json)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                print(error.localizedDescription)
+                return DispatchQueue.main.async { failure(DataManagerError.generic(error)) }
             }
-            if let httpResponse = response as? HTTPURLResponse,
-                let message = HTTPResponseCode(rawValue: httpResponse.statusCode)?.message {
-                if httpResponse.statusCode == HTTPResponseCode.code201.rawValue {
-                    return DispatchQueue.main.async { success(message) }
-                } else {
-                    return DispatchQueue.main.async { failure(message) }
-                }
+            guard let httpResponse = response as? HTTPURLResponse
+                else { return DispatchQueue.main.async { failure(DataManagerError.castingResponseFailure) } }
+            if httpResponse.statusCode == HTTPResponseCode.created.rawValue {
+                return DispatchQueue.main.async { success(HTTPResponseCode.created.message) }
+            } else {
+                return DispatchQueue.main.async { failure(DataManagerError.httpResponseCode(httpResponse.statusCode)) }
             }
         }
         task.resume()

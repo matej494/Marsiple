@@ -10,17 +10,19 @@
 "posts_navigation_bar_title" = "Posts";
 
 /* PostsFetcherError */
-"posts_fetcher_url_creation_failure" = "Error creating URL.";
-"posts_fetcher_data_unwrapping_failure" = "Error unwrapping data.";
-"posts_fetcher_parsing_data_failure" = "Error parsing data.";
+"data_manager_url_creation_failure" = "Error creating URL.";
+"data_manager_data_unwrapping_failure" = "Error unwrapping data.";
+"data_manager_parsing_data_failure" = "Error parsing data.";
+"data_manager_data_encoding_failure" = "Error encoding data.";
+"data_manager_casting_response_failure" = "Error casting response";
 
 /* Post Details */
 "post_details_navigation_bar_title" = "Post details";
 
 /* Commnet */
 "comment_navigation_bar_title" = "Comment";
-"succes_alert_title" = "Comment uploaded";
-"succes_alert_message" = "Response: %@";
+"success_alert_title" = "Comment uploaded";
+"success_alert_message" = "Response: %@";
 "failure_alert_title" = "Something went wrong";
 "failure_alert_message" = "Response: %@";
 "ok_alert_action" = "Ok";
