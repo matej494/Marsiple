@@ -56,7 +56,7 @@ private extension TodoTableViewCell {
         contentView.addSubview(checkBoxImageView)
         checkBoxImageView.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
         checkBoxImageView.snp.makeConstraints {
-            $0.leading.equalTo(todoLabel.snp.trailing).inset(10)
+            $0.leading.equalTo(todoLabel.snp.trailing).inset(-10)
             $0.top.trailing.bottom.equalToSuperview().inset(10)
             $0.height.width.equalTo(20)
         }

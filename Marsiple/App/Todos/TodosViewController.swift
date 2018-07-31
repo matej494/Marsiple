@@ -73,6 +73,7 @@ private extension TodosViewController {
         view.backgroundColor = .white
         todosView.tableView.dataSource = self
         todosView.tableView.delegate = self
+        todosView.tableView.estimatedRowHeight = 30
         view.addSubview(todosView)
         todosView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
