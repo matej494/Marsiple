@@ -10,15 +10,37 @@
 "posts_navigation_bar_title" = "Posts";
 
 /* PostsFetcherError */
-"posts_fetcher_url_creation_failure" = "Error creating URL.";
-"posts_fetcher_data_unwrapping_failure" = "Error unwrapping data.";
-"posts_fetcher_parsing_data_failure" = "Error parsing data.";
+"data_manager_url_creation_failure" = "Error creating URL.";
+"data_manager_data_unwrapping_failure" = "Error unwrapping data.";
+"data_manager_parsing_data_failure" = "Error parsing data.";
+"data_manager_data_encoding_failure" = "Error encoding data.";
+"data_manager_casting_response_failure" = "Error casting response";
 
 /* Post Details */
 "post_details_navigation_bar_title" = "Post details";
 
-/* Comment */
+/* Commnet */
 "comment_navigation_bar_title" = "Comment";
+"success_alert_title" = "Comment uploaded";
+"success_alert_message" = "Response: %@";
+"failure_alert_title" = "Something went wrong";
+"failure_alert_message" = "Response: %@";
+"ok_alert_action" = "Ok";
+"cancel_alert_action" = "Cancel";
+"stay_here_alert_action" = "Stay here";
+
+/* HTTPResponseCodes */
+"http_response_code_200" = "Ok";
+"http_response_code_201" = "Created";
+"http_response_code_204" = "No content";
+"http_response_code_400" = "Bad Request";
+"http_response_code_401" = "Unauthorized";
+"http_response_code_403" = "Forbidden";
+"http_response_code_404" = "Not found";
+"http_response_code_405" = "Method not allowed";
+"http_response_code_406" = "Not acceptable";
+"http_response_code_415" = "Unsupported media type";
+"http_response_code_unknown_code" = "Unknown code";
 
 /* BarButtonItems */
 "save_bar_button_title" = "Save";
