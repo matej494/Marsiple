@@ -9,9 +9,9 @@
 import Foundation
 
 enum HTTPResponseCode: Int {
-    case success = 200
+    case ok = 200
     case created = 201
-    case successWithoutResponseBody = 204
+    case noContent = 204
     case badRequest = 400
     case unauthorized = 401
     case forbidden = 403
@@ -22,12 +22,12 @@ enum HTTPResponseCode: Int {
     
     var message: String {
         switch self {
-        case .success:
-            return LocalizationKey.HTTPResponseCodes.success.localized()
+        case .ok:
+            return LocalizationKey.HTTPResponseCodes.ok.localized()
         case .created:
             return LocalizationKey.HTTPResponseCodes.created.localized()
-        case .successWithoutResponseBody:
-            return LocalizationKey.HTTPResponseCodes.successWithoutResponseBody.localized()
+        case .noContent:
+            return LocalizationKey.HTTPResponseCodes.noContent.localized()
         case .badRequest:
             return LocalizationKey.HTTPResponseCodes.badRequest.localized()
         case .unauthorized:

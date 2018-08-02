@@ -30,9 +30,9 @@
 "stay_here_alert_action" = "Stay here";
 
 /* HTTPResponseCodes */
-"http_response_code_200" = "Success";
+"http_response_code_200" = "Ok";
 "http_response_code_201" = "Created";
-"http_response_code_204" = "Success";
+"http_response_code_204" = "No content";
 "http_response_code_400" = "Bad Request";
 "http_response_code_401" = "Unauthorized";
 "http_response_code_403" = "Forbidden";

@@ -20,7 +20,7 @@ class PostsViewController: UIViewController {
                                 self?.posts = posts
                                 self?.postsView.tableView.reloadData() },
                              failure: { error in
-                                print(error.errorDescription) })
+                                print(error.localizedDescription) })
     }
     
     required init?(coder aDecoder: NSCoder) {

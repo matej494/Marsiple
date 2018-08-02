@@ -42,9 +42,9 @@ struct LocalizationKey {
     }
     
     struct HTTPResponseCodes {
-        static let success = "http_response_code_200"
+        static let ok = "http_response_code_200"
         static let created = "http_response_code_201"
-        static let successWithoutResponseBody = "http_response_code_204"
+        static let noContent = "http_response_code_204"
         static let badRequest = "http_response_code_400"
         static let unauthorized = "http_response_code_401"
         static let forbidden = "http_response_code_403"

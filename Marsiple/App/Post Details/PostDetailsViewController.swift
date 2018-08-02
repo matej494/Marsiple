@@ -75,6 +75,6 @@ private extension PostDetailsViewController {
                                     self?.comments = comments
                                     self?.postDetailsView.tableView.reloadData() },
                                 failure: { error in
-                                    print(error.errorDescription) })
+                                    print(error.localizedDescription) })
     }
 }
