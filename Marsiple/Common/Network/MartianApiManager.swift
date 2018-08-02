@@ -77,7 +77,7 @@ private extension MartianApiManager {
     static func setupRequest(url: URL, method: String, body: Data? = nil) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.addValue(MartianApi.Headers.contentTypeValue, forHTTPHeaderField: HTTPRequestHeader.contentType)
+        request.addValue(MartianApi.Headers.defaultContentType, forHTTPHeaderField: HTTPRequestHeader.contentType)
         request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
         request.httpBody = body
         return request

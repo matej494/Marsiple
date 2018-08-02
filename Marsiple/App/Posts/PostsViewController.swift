@@ -47,7 +47,6 @@ extension PostsViewController: UITableViewDataSource {
 
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tabBarController?.tabBar.isHidden = true
         let postDetailsViewController = PostDetailsViewController(post: posts[indexPath.row])
         navigationController?.pushViewController(postDetailsViewController, animated: true)
     }

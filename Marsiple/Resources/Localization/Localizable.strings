@@ -28,6 +28,7 @@
 "ok_alert_action" = "Ok";
 "cancel_alert_action" = "Cancel";
 "stay_here_alert_action" = "Stay here";
+"comment_text_placeholder" = "Comment...";
 
 /* HTTPResponseCodes */
 "http_response_code_200" = "Ok";

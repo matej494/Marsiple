@@ -16,6 +16,12 @@ class PostDetailsViewController: UIViewController {
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
+        MartianApiManager.getComments(forPostId: post.id,
+                                success: { [weak self] comments in
+                                    self?.comments = comments
+                                    self?.postDetailsView.tableView.reloadData() },
+                                failure: { error in
+                                    print(error.errorDescription) })
         setupView()
         setupNavigationBar()
     }
@@ -59,6 +65,7 @@ private extension PostDetailsViewController {
     }
     
     func setupView() {
+        hidesBottomBarWhenPushed = true
         view.backgroundColor = .martianLightGrey
         view.addSubview(postDetailsView)
         postDetailsView.updatePostProperties(title: post.title, body: post.body)

@@ -39,6 +39,7 @@ struct LocalizationKey {
         static let okAlertAction = "ok_alert_action"
         static let cancelAlertAction = "cancel_alert_action"
         static let stayHereAlertAction = "stay_here_alert_action"
+        static let commentTextPlaceholder = "comment_text_placeholder"
     }
     
     struct HTTPResponseCodes {

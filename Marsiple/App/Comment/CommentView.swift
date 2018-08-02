@@ -63,6 +63,13 @@ extension CommentView: UITextViewDelegate {
         if count <= maxCharacterCount { characterCountLabel.text = "\(count) / \(maxCharacterCount)" }
         return count <= maxCharacterCount
     }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
 }
 
 private extension CommentView {
@@ -75,6 +82,9 @@ private extension CommentView {
     
     func setupTextView() {
         textView.delegate = self
+        textView.font = .systemFont(ofSize: 15)
+        textView.text = LocalizationKey.Comment.commentTextPlaceholder.localized()
+        textView.textColor = .lightGray
         addSubview(textView)
         textView.snp.makeConstraints {
             $0.leading.top.trailing.equalToSuperview()
