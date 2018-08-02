@@ -58,7 +58,7 @@ extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             todos[indexPath.section].remove(at: indexPath.row)
-            tableView.reloadData()
+            tableView.performBatchUpdates({ tableView.deleteRows(at: [indexPath], with: .automatic) }, completion: nil)
         }
     }
 }
@@ -70,13 +70,13 @@ extension TodosViewController: TodoTableViewCellDelegate {
 
     func tableViewCell(didSelectCheckBoxAt indexPath: IndexPath) {
         // TODO: Save changes on the server
-        let finishIndexPath = IndexPath(row: todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        let removedTodo = todos[indexPath.section].remove(at: indexPath.row)
+        removedTodo.completed = !removedTodo.completed
+        todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
         todosView.tableView.performBatchUpdates({
-            let removedTodo = todos[indexPath.section].remove(at: indexPath.row)
-            removedTodo.completed = !removedTodo.completed
-            todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
             todosView.tableView.moveRow(at: indexPath, to: finishIndexPath) },
-                                      completion: { [weak self] _ in self?.todosView.tableView.reloadData() })
+                                                completion: { [weak self] _ in self?.todosView.tableView.reloadRows(at: [finishIndexPath], with: .automatic) })
     }
 }
 
