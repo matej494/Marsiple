@@ -21,6 +21,10 @@ class TodosViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        reloadData()
+    }
 }
 
 extension TodosViewController: UITableViewDataSource {
@@ -36,21 +40,13 @@ extension TodosViewController: UITableViewDataSource {
         guard let cell = todosView.tableView.dequeueReusableCell(withIdentifier: "TodoTableViewCell", for: indexPath) as? TodoTableViewCell
             else { return UITableViewCell() }
         cell.updateProperties(withTodo: todos[indexPath.section][indexPath.row])
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
     }
 }
 
 extension TodosViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let finishIndexPath = IndexPath(row: todos[1 - indexPath.section].count, section: 1 - indexPath.section)
-        tableView.performBatchUpdates({
-            var removedTodo = todos[indexPath.section].remove(at: indexPath.row)
-            removedTodo.completed = !removedTodo.completed
-            todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
-            tableView.moveRow(at: indexPath, to: finishIndexPath) },
-                                      completion: { _ in tableView.reloadData() })
-    }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section == 0 ? nil : LocalizationKey.Todos.completedSectionHeader.localized()
     }
@@ -67,8 +63,32 @@ extension TodosViewController: UITableViewDelegate {
     }
 }
 
+extension TodosViewController: TodoTableViewCellDelegate {
+    func tableViewCell(didSelectTitleAt indexPath: IndexPath) {
+        navigationController?.pushViewController(TodoFormViewController(todo: todos[indexPath.section][indexPath.row]), animated: true)
+    }
+
+    func tableViewCell(didSelectCheckBoxAt indexPath: IndexPath) {
+        // TODO: Save changes on the server
+        let finishIndexPath = IndexPath(row: todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        todosView.tableView.performBatchUpdates({
+            let removedTodo = todos[indexPath.section].remove(at: indexPath.row)
+            removedTodo.completed = !removedTodo.completed
+            todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
+            todosView.tableView.moveRow(at: indexPath, to: finishIndexPath) },
+                                      completion: { [weak self] _ in self?.todosView.tableView.reloadData() })
+    }
+}
+
+private extension TodosViewController {
+    @objc func addButtonTapped() {
+        navigationController?.pushViewController(TodoFormViewController(), animated: true)
+    }
+}
+
 private extension TodosViewController {
     func setupView() {
+        setupNavigationBar()
         title = LocalizationKey.Todos.navigationBarTitle.localized()
         view.backgroundColor = .white
         todosView.tableView.dataSource = self
@@ -80,9 +100,32 @@ private extension TodosViewController {
         }
     }
     
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+    }
+    
+    // NOTE: This is just temporary, until network is implemented
     func setupTodos() -> [[Todo]] {
-        let uncompleted = [Todo](repeating: Todo(id: 1, title: "Todo 1", completed: false, userId: 1), count: 10)
-        let completed = [Todo](repeating: Todo(id: 1, title: "Todo 2", completed: true, userId: 1), count: 10)
+        var uncompleted = [Todo]()
+        var completed = [Todo]()
+        for i in 0...9 {
+            uncompleted.append(Todo(id: i, title: "Todo \(0)\(i)", completed: false, userId: -1))
+            completed.append(Todo(id: i, title: "Todo \(1)\(i)", completed: true, userId: -1))
+        }
         return [uncompleted, completed]
+    }
+    
+    func reloadData() {
+        let newlyCompleted = todos[TodosIndex.uncompleted.rawValue].filter { $0.completed }
+        if !newlyCompleted.isEmpty {
+            todos[TodosIndex.uncompleted.rawValue] = todos[TodosIndex.uncompleted.rawValue].filter { $0.completed == false }
+            todos[TodosIndex.completed.rawValue] += newlyCompleted
+        }
+        let newlyUncompleted = todos[TodosIndex.completed.rawValue].filter { $0.completed == false }
+        if !newlyUncompleted.isEmpty {
+            todos[TodosIndex.completed.rawValue] = todos[TodosIndex.completed.rawValue].filter { $0.completed }
+            todos[TodosIndex.uncompleted.rawValue] += newlyUncompleted
+        }
+        todosView.tableView.reloadData()
     }
 }

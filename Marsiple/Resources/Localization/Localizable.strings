@@ -17,3 +17,7 @@
 /* Todos */
 "todos_navigation_bar_title" = "Todos";
 "todos_completed_section_header" = "Completed";
+
+/* TodoForm */
+"todo_navigation_bar_title" = "Todo";
+"todo_view_form_title_placeholder" = "Todo text...";

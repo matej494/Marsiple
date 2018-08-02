@@ -23,4 +23,9 @@ struct LocalizationKey {
         static let navigationBarTitle = "todos_navigation_bar_title"
         static let completedSectionHeader = "todos_completed_section_header"
     }
+    
+    struct TodoForm {
+        static let navigationBarTitle = "todo_navigation_bar_title"
+        static let titlePlaceholder = "todo_view_form_title_placeholder"
+    }
 }
