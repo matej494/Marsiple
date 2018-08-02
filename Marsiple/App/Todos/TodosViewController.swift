@@ -42,13 +42,13 @@ extension TodosViewController: UITableViewDataSource {
 
 extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let finishIndexPath = IndexPath(row: todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        var removedTodo = todos[indexPath.section].remove(at: indexPath.row)
+        removedTodo.completed = !removedTodo.completed
+        todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
         tableView.performBatchUpdates({
-            var removedTodo = todos[indexPath.section].remove(at: indexPath.row)
-            removedTodo.completed = !removedTodo.completed
-            todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
             tableView.moveRow(at: indexPath, to: finishIndexPath) },
-                                      completion: { _ in tableView.reloadData() })
+                                      completion: { _ in tableView.reloadRows(at: [finishIndexPath], with: .automatic) })
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -62,7 +62,7 @@ extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             todos[indexPath.section].remove(at: indexPath.row)
-            tableView.reloadData()
+            tableView.performBatchUpdates({ tableView.deleteRows(at: [indexPath], with: .automatic) }, completion: nil)
         }
     }
 }
