@@ -19,7 +19,9 @@ class PhotoCollectionViewController: UICollectionViewController {
                               success: { [weak self] photos in
                                 self?.photos = photos
                                 self?.collectionView?.reloadData() },
-                              failure: { error in print(error.errorDescription) })
+                              failure: { error in
+                                print(error.localizedDescription)
+        })
         setupView()
     }
     
