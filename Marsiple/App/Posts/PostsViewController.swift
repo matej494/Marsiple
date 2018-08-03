@@ -11,16 +11,16 @@ import SnapKit
 class PostsViewController: UIViewController {
     private var posts: [Post] = []
     private let postsView = PostsView.autolayoutView()
-    private let postsFetcher = PostsFetcher()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         setupView()
-        postsFetcher.getPosts(success: { [weak self] posts in
-                                self?.posts = posts
-                                self?.postsView.tableView.reloadData() },
-                              failure: { error in
-                                print(error.errorDescription) })
+        DataFetcher.getPosts(success: { [weak self] posts in
+            self?.posts = posts
+            self?.postsView.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {

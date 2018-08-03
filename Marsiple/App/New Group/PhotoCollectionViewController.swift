@@ -9,19 +9,26 @@
 import UIKit
 
 class PhotoCollectionViewController: UICollectionViewController {
-    private let photos: [UIImage] // NOTE: Test code - will be replaced with URL
+    private let albumId: Int
+    private var photos = [Photo]()
     
-    init(photos: [UIImage]) {
-        self.photos = photos
+    init(albumId: Int) {
+        self.albumId = albumId
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        setupCollectionView()
+        DataFetcher.getPhotos(albumId: albumId,
+                              success: { [weak self] photos in
+                                self?.photos = photos
+                                self?.collectionView?.reloadData() },
+                              failure: { error in
+                                print(error.localizedDescription)
+        })
+        setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -32,12 +39,16 @@ class PhotoCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
-        cell.updateCell(withImage: photos[indexPath.item])
+        cell.updateCell(withURL: photos[indexPath.item].thumbnailUrl)
         return cell
     }
 }
 
 private extension PhotoCollectionViewController {
+    func setupView() {
+        setupCollectionView()
+    }
+    
     func setupCollectionView() {
         self.collectionView!.backgroundColor = .white
         self.collectionView!.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")

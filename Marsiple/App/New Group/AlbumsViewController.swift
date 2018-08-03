@@ -9,12 +9,20 @@
 import SnapKit
 
 class AlbumsViewController: UIViewController {
-    private let albums = [Album](repeating: Album(images: [#imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4"), #imageLiteral(resourceName: "Image5"), #imageLiteral(resourceName: "Image1"), #imageLiteral(resourceName: "Image2"), #imageLiteral(resourceName: "Image3"), #imageLiteral(resourceName: "Image4")]), count: 10) // TODO: Popoulate with real data
-    private lazy var photoCollectionViewControllers = albums.map { PhotoCollectionViewController(photos: $0.photos) }
+    private var albums = [Album]() {
+        didSet { photoCollectionViewControllers = albums.map { PhotoCollectionViewController(albumId: $0.id) } }
+    }
+    private var photoCollectionViewControllers = [PhotoCollectionViewController]()
     private let albumsView = AlbumsView.autolayoutView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        DataFetcher.getAlbums(success: { [weak self] albums in
+            self?.albums = albums
+            self?.albumsView.tableView.reloadData()
+        }, failure: { error in
+            print(error.localizedDescription)
+        })
         setupView()
     }
     
@@ -29,25 +37,16 @@ extension AlbumsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albums.count
+        return photoCollectionViewControllers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) as UITableViewCell
-        return cell
-    }
-}
-
-extension AlbumsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.addSubview(photoCollectionViewControllers[indexPath.row].view)
+        cell.contentView.addSubview(photoCollectionViewControllers[indexPath.row].view)
         photoCollectionViewControllers[indexPath.row].view.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.subviews.forEach { $0.removeFromSuperview() }
+        return cell
     }
 }
 
@@ -57,7 +56,6 @@ private extension AlbumsViewController {
         view.backgroundColor = .white
         view.addSubview(albumsView)
         albumsView.tableView.dataSource = self
-        albumsView.tableView.delegate = self
         albumsView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         albumsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)

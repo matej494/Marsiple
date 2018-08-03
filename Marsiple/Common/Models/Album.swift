@@ -8,10 +8,14 @@
 
 import UIKit
 
-struct Album { //TODO: - Setup properties to correspond to Json object from api
-    let photos: [UIImage]
+struct Album: Codable {
+    let userId: Int
+    let id: Int
+    let title: String
     
-    init(images: [UIImage]) {
-        self.photos = images
+    init(userId: Int, id: Int, title: String) {
+        self.userId = userId
+        self.id = id
+        self.title = title
     }
 }
