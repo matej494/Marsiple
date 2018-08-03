@@ -8,26 +8,6 @@
 
 import UIKit
 
-enum DataFetcherError: LocalizedError {
-    case urlCreationFailure
-    case dataUnwrapingFailure
-    case parsingDataFailure
-    case generic(Error)
-    
-    var errorDescription: String? {
-        switch self {
-        case .urlCreationFailure:
-            return LocalizationKey.DataFetcherError.urlCreationFailure.localized()
-        case .dataUnwrapingFailure:
-            return LocalizationKey.DataFetcherError.dataUnwrapingFailure.localized()
-        case .parsingDataFailure:
-            return LocalizationKey.DataFetcherError.parsingDataFailure.localized()
-        case .generic(let error):
-            return error.localizedDescription
-        }
-    }
-}
-
 struct DataFetcher {
     static func getPosts(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let url = MartianApi.url?.appendingPathComponent("posts")
@@ -46,6 +26,15 @@ struct DataFetcher {
                             .appendingPathComponent("albums")
                             .appendingPathComponent("\(albumId)")
                             .appendingPathComponent("photos")
+            else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
+        getData(url: url, success: success, failure: failure)
+    }
+    
+    static func getComments(forPostId id: Int, success: @escaping ([Comment]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = MartianApi.url?
+                            .appendingPathComponent(MartianApi.URLs.posts)
+                            .appendingPathComponent("\(id)")
+                            .appendingPathComponent(MartianApi.URLs.comments)
             else { return DispatchQueue.main.async { failure(DataFetcherError.urlCreationFailure) } }
         getData(url: url, success: success, failure: failure)
     }
@@ -72,7 +61,7 @@ private extension DataFetcher {
     static func setupRequest(url: URL) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPRequestMethod.get
-        request.addValue(MartianApi.Headers.contentTypeValue, forHTTPHeaderField: HTTPRequestHeader.contentType)
+        request.addValue(MartianApi.Headers.defaultContentType, forHTTPHeaderField: HTTPRequestHeader.contentType)
         request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
         return request
     }
