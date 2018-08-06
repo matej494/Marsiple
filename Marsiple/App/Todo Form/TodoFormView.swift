@@ -11,10 +11,12 @@ import SnapKit
 class TodoFormView: UIView {
     var placeholder = LocalizationKey.TodoForm.titlePlaceholder.localized() {
         didSet {
-            if placeholder.isEmpty { textViewIsEmpty() }
-            else {
+            if placeholder.isEmpty {
+                textView.text = LocalizationKey.TodoForm.titlePlaceholder.localized()
+                textView.textColor = .lightGray
+            } else {
+                textView.textColor = .black
                 textView.text = placeholder
-                textView.textColor = UIColor.black
             }
         }
     }
@@ -32,27 +34,20 @@ class TodoFormView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 extension TodoFormView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == .lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = .black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty { textViewIsEmpty() }
-    }
-    
-    func textViewIsEmpty() {
-        textView.text = LocalizationKey.TodoForm.titlePlaceholder.localized()
-        textView.textColor = UIColor.lightGray
+        if textView.text.isEmpty {
+            placeholder = ""
+        }
     }
 }
 
@@ -73,16 +68,12 @@ private extension TodoFormView {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
             else { return }
         let keyboardHeight = endFrame.size.height
-        keyboardSizedView.snp.updateConstraints {
-            $0.height.equalTo(keyboardHeight)
-        }
+        keyboardSizedView.snp.updateConstraints { $0.height.equalTo(keyboardHeight) }
         layoutIfNeeded()
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        keyboardSizedView.snp.updateConstraints {
-            $0.height.equalTo(0)
-        }
+        keyboardSizedView.snp.updateConstraints { $0.height.equalTo(0) }
         layoutIfNeeded()
     }
 }
@@ -94,13 +85,11 @@ private extension TodoFormView {
     }
     
     func setupTextView() {
-        textViewIsEmpty()
+        placeholder = ""
         textView.font = .systemFont(ofSize: 20)
         textView.delegate = self
         addSubview(textView)
-        textView.snp.makeConstraints {
-            $0.leading.top.trailing.equalToSuperview()
-        }
+        textView.snp.makeConstraints { $0.leading.top.trailing.equalToSuperview() }
     }
     
     func setupKeyboardSizedView() {

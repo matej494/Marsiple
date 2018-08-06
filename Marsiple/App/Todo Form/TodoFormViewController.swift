@@ -9,27 +9,29 @@
 import SnapKit
 
 class TodoFormViewController: UIViewController {
-    // NOTE: id is set to -1 so we can detect if we're creating new or changing existing todo (to detect wich initializer is used)
-    private var todo = Todo(id: -1, title: "", completed: false, userId: 1)
+    var todoTextIsEdited: (() -> Void)?
+    var todoCompletedIsEdited: (() -> Void)?
+    private var todo: Todo
+    private let isEditingTodo: Bool
     private let todoFormView = TodoFormView.autolayoutView()
     private lazy var completedButton: UIButton = {
         let button = UIButton()
-        let image = todo.completed ? #imageLiteral(resourceName: "checkbox-selected") : #imageLiteral(resourceName: "checkbox-unselected")
-        button.setImage(image, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "checkbox-unselected"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "checkbox-selected"), for: .selected)
+        button.isSelected = todo.completed
         button.addTarget(self, action: #selector(completedButtonTapped), for: .touchDown)
-        button.snp.makeConstraints {
-            $0.width.height.equalTo(30)
-        }
+        button.snp.makeConstraints { $0.width.height.equalTo(30) }
         return button
     }()
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        setupView()
-    }
-    
-    init(todo: Todo) {
-        self.todo = todo
+    init(todo: Todo? = nil) {
+        if let todo = todo {
+            self.todo = todo
+            isEditingTodo = true
+        } else {
+            self.todo = Todo(id: -1, title: "", completed: false, userId: -1)
+            isEditingTodo = false
+        }
         super.init(nibName: nil, bundle: nil)
         setupView()
     }
@@ -41,14 +43,22 @@ class TodoFormViewController: UIViewController {
 
 private extension TodoFormViewController {
     @objc func completedButtonTapped() {
-        todo.completed = !todo.completed
-        let image = todo.completed ? #imageLiteral(resourceName: "checkbox-selected") : #imageLiteral(resourceName: "checkbox-unselected")
-        completedButton.setImage(image, for: .normal)
+        completedButton.isSelected = !completedButton.isSelected
     }
     
-    @objc func backButtonTapped() {
+    @objc func doneButtonTapped() {
         // TODO: Save changes on the server
-        todo.title = todoFormView.text
+        if isEditingTodo {
+            if todo.completed != completedButton.isSelected {
+                todo.title = todoFormView.text
+                todoCompletedIsEdited?()
+            } else if todo.title != todoFormView.text {
+                todo.title = todoFormView.text
+                todoTextIsEdited?()
+            }
+        } else {
+            // TODO: Save new todo
+        }
         navigationController?.popViewController(animated: true)
     }
 }
@@ -65,14 +75,12 @@ private extension TodoFormViewController {
         navigationItem.title = LocalizationKey.TodoForm.navigationBarTitle.localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: completedButton)
         navigationItem.hidesBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(backButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
     }
     
     func setupFormView() {
         todoFormView.placeholder = todo.title
         view.addSubview(todoFormView)
-        todoFormView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+        todoFormView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
     }
 }

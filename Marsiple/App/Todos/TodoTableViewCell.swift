@@ -9,17 +9,13 @@
 import SnapKit
 
 class TodoTableViewCell: UITableViewCell {
-    weak var delegate: TodoTableViewCellDelegate?
-    var indexPath = IndexPath()
-    private let todoLabelContainerView = UIView.autolayoutView()
-    private let checkBoxContainerView = UIView.autolayoutView()
+    var didSelectCheckBox: (() -> Void)?
     private let todoLabel = UILabel.autolayoutView()
-    private let checkBoxImageView = UIImageView.autolayoutView()
+    private let checkBoxButton = UIButton.autolayoutView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        setupGestureRecognizers()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,7 +25,7 @@ class TodoTableViewCell: UITableViewCell {
 
 extension TodoTableViewCell {
     func updateProperties(withTodo todo: Todo) {
-        checkBoxImageView.image = todo.completed ? #imageLiteral(resourceName: "checkbox-selected") : #imageLiteral(resourceName: "checkbox-unselected")
+        checkBoxButton.isSelected = todo.completed
         if todo.completed {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: todo.title)
             attributeString.addAttribute(.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -42,60 +38,33 @@ extension TodoTableViewCell {
 }
 
 private extension TodoTableViewCell {
-    @objc func titleTapped() {
-        delegate?.tableViewCell(didSelectTitleAt: indexPath)
-    }
-    
-    @objc func checkBoxTapped() {
-        delegate?.tableViewCell(didSelectCheckBoxAt: indexPath)
+    @objc func checkBoxButtonPressed() {
+        didSelectCheckBox?()
     }
 }
 
 private extension TodoTableViewCell {
     func setupViews() {
-        setupContainerViews()
         setupTodoLabel()
-        setupCheckBoxImageView()
-    }
-    
-    func setupContainerViews() {
-        contentView.addSubview(todoLabelContainerView)
-        todoLabelContainerView.snp.makeConstraints {
-            $0.leading.top.bottom.equalToSuperview()
-        }
-        contentView.addSubview(checkBoxContainerView)
-        checkBoxContainerView.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
-        checkBoxContainerView.snp.makeConstraints {
-            $0.top.trailing.bottom.equalToSuperview()
-            $0.leading.equalTo(todoLabelContainerView.snp.trailing)
-        }
+        setupCheckBoxButton()
     }
     
     func setupTodoLabel() {
-        todoLabelContainerView.addSubview(todoLabel)
-        todoLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10)
-        }
+        contentView.addSubview(todoLabel)
+        todoLabel.snp.makeConstraints { $0.leading.top.bottom.equalToSuperview().inset(10) }
     }
     
-    func setupCheckBoxImageView() {
-        checkBoxImageView.contentMode = .scaleAspectFit
-        checkBoxImageView.clipsToBounds = true
-        checkBoxImageView.image = #imageLiteral(resourceName: "checkbox-unselected")
-        checkBoxContainerView.addSubview(checkBoxImageView)
-        checkBoxImageView.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
-        checkBoxImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview().inset(10)
+    func setupCheckBoxButton() {
+        checkBoxButton.setImage(#imageLiteral(resourceName: "checkbox-unselected"), for: .normal)
+        checkBoxButton.setImage(#imageLiteral(resourceName: "checkbox-selected"), for: .selected)
+        checkBoxButton.isSelected = false
+        checkBoxButton.addTarget(self, action: #selector(checkBoxButtonPressed), for: .touchDown)
+        contentView.addSubview(checkBoxButton)
+        checkBoxButton.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
+        checkBoxButton.snp.makeConstraints {
+            $0.top.trailing.bottom.equalToSuperview().inset(10)
+            $0.leading.equalTo(todoLabel.snp.trailing)
             $0.height.width.equalTo(20)
         }
-    }
-    
-    func setupGestureRecognizers() {
-        let titleTap = UITapGestureRecognizer(target: self, action: #selector(titleTapped))
-        todoLabelContainerView.addGestureRecognizer(titleTap)
-        todoLabelContainerView.isUserInteractionEnabled = true
-        let checkBoxTap = UITapGestureRecognizer(target: self, action: #selector(checkBoxTapped))
-        checkBoxContainerView.addGestureRecognizer(checkBoxTap)
-        checkBoxContainerView.isUserInteractionEnabled = true
     }
 }

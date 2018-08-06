@@ -18,7 +18,6 @@
 		F5447C7B210EFB14001A20F2 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5447C7A210EFB14001A20F2 /* Todo.swift */; };
 		F54873D121109274001B3D6F /* TodoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D021109274001B3D6F /* TodoFormViewController.swift */; };
 		F54873D321109293001B3D6F /* TodoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D221109293001B3D6F /* TodoFormView.swift */; };
-		F54873D72112DC13001B3D6F /* TodoTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D62112DC13001B3D6F /* TodoTableViewCellDelegate.swift */; };
 		F54873D92112F3AE001B3D6F /* TodosIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D82112F3AE001B3D6F /* TodosIndex.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
@@ -63,7 +62,6 @@
 		F5447C7A210EFB14001A20F2 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		F54873D021109274001B3D6F /* TodoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormViewController.swift; sourceTree = "<group>"; };
 		F54873D221109293001B3D6F /* TodoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormView.swift; sourceTree = "<group>"; };
-		F54873D62112DC13001B3D6F /* TodoTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		F54873D82112F3AE001B3D6F /* TodosIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosIndex.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				F5403D3B2109D848003D5088 /* TodosViewController.swift */,
 				F5403D3D2109D862003D5088 /* TodosView.swift */,
 				F5B106CD2109D9FA008D12AA /* TodoTableViewCell.swift */,
-				F54873D62112DC13001B3D6F /* TodoTableViewCellDelegate.swift */,
 				F54873D82112F3AE001B3D6F /* TodosIndex.swift */,
 			);
 			path = Todos;
@@ -518,7 +515,6 @@
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
 				F5B106CE2109D9FA008D12AA /* TodoTableViewCell.swift in Sources */,
-				F54873D72112DC13001B3D6F /* TodoTableViewCellDelegate.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
 				F5447C7B210EFB14001A20F2 /* Todo.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
