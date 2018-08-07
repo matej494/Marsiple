@@ -17,3 +17,6 @@
 /* Todos */
 "todos_navigation_bar_title" = "Todos";
 "todos_completed_section_header" = "Completed";
+
+/* Post Details */
+"post_details-navigation_bar_title" = "Post details";

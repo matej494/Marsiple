@@ -8,6 +8,7 @@ target 'Marsiple' do
   # Pods for Marsiple
     pod 'SwiftLint'
     pod 'SnapKit', '~> 4.0.0'
+    pod 'Kingfisher', '~> 4.0'
 
   target 'MarsipleTests' do
     inherit! :search_paths
