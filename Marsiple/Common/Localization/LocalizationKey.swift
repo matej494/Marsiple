@@ -19,6 +19,11 @@ struct LocalizationKey {
         static let parsingDataFailure = "posts_fetcher_parsing_data_failure"
     }
     
+    struct Todos {
+        static let navigationBarTitle = "todos_navigation_bar_title"
+        static let completedSectionHeader = "todos_completed_section_header"
+    }
+
     struct PostDetails {
         static let navigationBarTitle = "post_details-navigation_bar_title"
     }

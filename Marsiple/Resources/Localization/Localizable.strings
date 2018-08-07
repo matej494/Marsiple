@@ -14,5 +14,9 @@
 "posts_fetcher_data_unwrapping_failure" = "Error unwrapping data.";
 "posts_fetcher_parsing_data_failure" = "Error parsing data.";
 
+/* Todos */
+"todos_navigation_bar_title" = "Todos";
+"todos_completed_section_header" = "Completed";
+
 /* Post Details */
 "post_details-navigation_bar_title" = "Post details";
