@@ -32,6 +32,21 @@ class MartianApiManager {
             else { return }
         postData(data: comment, url: url, success: success, failure: failure)
     }
+    
+    static func getAlbums(success: @escaping ([Album]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = MartianApi.url?.appendingPathComponent("albums")
+            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
+        getData(url: url, success: success, failure: failure)
+    }
+    
+    static func getPhotos(albumId: Int, success: @escaping ([Photo]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = MartianApi.url?
+            .appendingPathComponent("albums")
+            .appendingPathComponent("\(albumId)")
+            .appendingPathComponent("photos")
+            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
+        getData(url: url, success: success, failure: failure)
+    }
 }
 
 private extension MartianApiManager {
