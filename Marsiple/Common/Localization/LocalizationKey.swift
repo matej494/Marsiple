@@ -13,7 +13,7 @@ struct LocalizationKey {
         static let navigationBarTitle = "posts_navigation_bar_title"
     }
     
-    struct PostsFetcherError {
+    struct DataFetcherError {
         static let urlCreationFailure = "posts_fetcher_url_creation_failure"
         static let dataUnwrapingFailure = "posts_fetcher_data_unwrapping_failure"
         static let parsingDataFailure = "posts_fetcher_parsing_data_failure"

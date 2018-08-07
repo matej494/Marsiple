@@ -17,11 +17,11 @@ enum DataFetcherError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .urlCreationFailure:
-            return LocalizationKey.PostsFetcherError.urlCreationFailure.localized()
+            return LocalizationKey.DataFetcherError.urlCreationFailure.localized()
         case .dataUnwrapingFailure:
-            return LocalizationKey.PostsFetcherError.dataUnwrapingFailure.localized()
+            return LocalizationKey.DataFetcherError.dataUnwrapingFailure.localized()
         case .parsingDataFailure:
-            return LocalizationKey.PostsFetcherError.parsingDataFailure.localized()
+            return LocalizationKey.DataFetcherError.parsingDataFailure.localized()
         case .generic(let error):
             return error.localizedDescription
         }
