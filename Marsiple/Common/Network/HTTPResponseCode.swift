@@ -1,5 +1,5 @@
 //
-//  HTTPResponseCodes.swift
+//  HTTPResponseCode.swift
 //  Marsiple
 //
 //  Created by Matej Korman on 27/07/2018.

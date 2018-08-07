@@ -9,11 +9,13 @@
 import SnapKit
 
 class CommentViewController: UIViewController {
+    private let updateComments: () -> Void
     private let postId: Int
     private let commentView = CommentView.autolayoutView()
     
-    init(postId: Int) {
+    init(postId: Int, updateComments: @escaping () -> Void) {
         self.postId = postId
+        self.updateComments = updateComments
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupNavigationBar()
@@ -39,6 +41,7 @@ private extension CommentViewController {
                                                         message: LocalizationKey.Comment.successAlertMessage.localized(message),
                                                         cancelActionTitle: LocalizationKey.Comment.okAlertAction.localized(),
                                                         cancelActionHandler: { [weak self] _ in
+                                                            self?.updateComments()
                                                             self?.navigationController?.popViewController(animated: true) })
                                         self?.present(alert, animated: true, completion: nil) },
                                       failure: { [weak self] error in
@@ -65,8 +68,6 @@ private extension CommentViewController {
     func setupView() {
         view.backgroundColor = .martianLightGrey
         view.addSubview(commentView)
-        commentView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+        commentView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
     }
 }

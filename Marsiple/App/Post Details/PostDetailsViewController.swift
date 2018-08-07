@@ -16,22 +16,13 @@ class PostDetailsViewController: UIViewController {
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
-        MartianApiManager.getComments(forPostId: post.id,
-                                success: { [weak self] comments in
-                                    self?.comments = comments
-                                    self?.postDetailsView.tableView.reloadData() },
-                                failure: { error in
-                                    print(error.errorDescription) })
+        updateComments()
         setupView()
         setupNavigationBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        updateComments()
     }
 }
 
@@ -54,7 +45,7 @@ extension PostDetailsViewController: UITableViewDataSource {
 
 private extension PostDetailsViewController {
     @objc func commentButtonTapped() {
-        navigationController?.pushViewController(CommentViewController(postId: post.id), animated: true)
+        navigationController?.pushViewController(CommentViewController(postId: post.id, updateComments: updateComments), animated: true)
     }
 }
 
@@ -71,17 +62,15 @@ private extension PostDetailsViewController {
         postDetailsView.updatePostProperties(title: post.title, body: post.body)
         postDetailsView.tableView.dataSource = self
         postDetailsView.tableView.register(PostDetailsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier.postDetailsTableViewCell)
-        postDetailsView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+        postDetailsView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
     }
     
     func updateComments() {
         MartianApiManager.getComments(forPostId: post.id,
-                                success: { [weak self] comments in
-                                    self?.comments = comments
-                                    self?.postDetailsView.tableView.reloadData() },
-                                failure: { error in
-                                    print(error.localizedDescription) })
+                                      success: { [weak self] comments in
+                                        self?.comments = comments
+                                        self?.postDetailsView.tableView.reloadData() },
+                                      failure: { error in
+                                        print(error.localizedDescription) })
     }
 }

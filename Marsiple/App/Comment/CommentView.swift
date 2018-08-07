@@ -30,10 +30,6 @@ class CommentView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
 }
 
 private extension CommentView {
@@ -46,9 +42,7 @@ private extension CommentView {
         let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
         let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
         let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-        keyboardSizedView.snp.updateConstraints {
-            $0.height.equalTo(keyboardHeight)
-        }
+        keyboardSizedView.snp.updateConstraints { $0.height.equalTo(keyboardHeight) }
         UIView.animate(withDuration: duration,
                        delay: TimeInterval(0),
                        options: animationCurve,
@@ -86,9 +80,7 @@ private extension CommentView {
         textView.text = LocalizationKey.Comment.commentTextPlaceholder.localized()
         textView.textColor = .lightGray
         addSubview(textView)
-        textView.snp.makeConstraints {
-            $0.leading.top.trailing.equalToSuperview()
-        }
+        textView.snp.makeConstraints { $0.leading.top.trailing.equalToSuperview() }
     }
     
     func setupCharacterCountLabel() {
