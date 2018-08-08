@@ -19,5 +19,9 @@ struct MartianApi {
     struct URLs {
         static let posts = "posts"
         static let comments = "comments"
+        static let albums = "albums"
+        static let photos = "photos"
+        static let users = "users"
+        static let todos = "todos"
     }
 }

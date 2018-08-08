@@ -10,11 +10,12 @@ import SnapKit
 
 class TodosViewController: UIViewController {
     // TODO: Replace todos with real data
-    private lazy var todos = setupTodos()
+    private lazy var todos = [[Todo]]()
     private let todosView = TodosView.autolayoutView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        setupTodos()
         setupView()
     }
     
@@ -84,9 +85,15 @@ private extension TodosViewController {
         }
     }
     
-    func setupTodos() -> [[Todo]] {
-        let uncompleted = [Todo](repeating: Todo(id: 1, title: "Todo 1", completed: false, userId: 1), count: 10)
-        let completed = [Todo](repeating: Todo(id: 1, title: "Todo 2", completed: true, userId: 1), count: 10)
-        return [uncompleted, completed]
+    func setupTodos() {
+        // NOTE: userId is used so app is testable (if all todos are downloaded it would be hard to see what's happening)
+        MartianApiManager.getTodos(userId: 2,
+                                   success: { [weak self] todos in
+                                    self?.todos.append(todos.filter({ $0.completed == false }))
+                                    self?.todos.append(todos.filter({ $0.completed }))
+                                    self?.todosView.tableView.reloadData() },
+                                   failure: { error in
+                                    print(error.localizedDescription)
+        })
     }
 }

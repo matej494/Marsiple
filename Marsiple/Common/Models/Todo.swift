@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Todo {
+struct Todo: Codable {
     let id: Int
     var title: String
     var completed: Bool
