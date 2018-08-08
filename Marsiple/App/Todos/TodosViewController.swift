@@ -122,6 +122,7 @@ private extension TodosViewController {
         todosView.tableView.performBatchUpdates({
             todosView.tableView.moveRow(at: startIndexPath, to: finishIndexPath)
         }, completion: { [weak self] _ in
+            self?.todosView.tableView.reloadRows(at: [finishIndexPath], with: .automatic)
             self?.todosView.tableView.reloadData()
         })
     }

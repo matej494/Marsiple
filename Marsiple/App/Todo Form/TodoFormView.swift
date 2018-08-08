@@ -11,7 +11,7 @@ import SnapKit
 class TodoFormView: UIView {
     var title: String {
         get { return textView.text }
-        set { isPlaceholderActive(newValue.isEmpty, newValue: newValue) }
+        set { isPlaceholderActive(newValue.isEmpty, text: newValue) }
     }
     
     private let textView = UITextView.autolayoutView()
@@ -31,13 +31,11 @@ class TodoFormView: UIView {
 
 extension TodoFormView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == placeholder {
-            isPlaceholderActive(false)
-        }
+        isPlaceholderActive(false, text: textView.text == placeholder ? nil : textView.text)
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        isPlaceholderActive(textView.text.isEmpty, newValue: textView.text)
+        isPlaceholderActive(textView.text.isEmpty, text: textView.text)
     }
 }
 
@@ -91,12 +89,12 @@ private extension TodoFormView {
         }
     }
     
-    func isPlaceholderActive(_ isActive: Bool, newValue: String? = nil) {
+    func isPlaceholderActive(_ isActive: Bool, text: String? = nil) {
         if isActive {
             textView.text = placeholder
             textView.textColor = .lightGray
         } else {
-            textView.text = newValue
+            textView.text = text
             textView.textColor = .black
         }
     }
