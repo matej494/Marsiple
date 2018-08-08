@@ -16,12 +16,7 @@ class PostDetailsViewController: UIViewController {
     init(post: Post) {
         self.post = post
         super.init(nibName: nil, bundle: nil)
-        DataFetcher.getComments(forPostId: post.id,
-                                success: { [weak self] comments in
-                                    self?.comments = comments
-                                    self?.postDetailsView.tableView.reloadData() },
-                                failure: { error in
-                                    print(error.errorDescription) })
+        updateComments()
         setupView()
         setupNavigationBar()
     }
@@ -49,19 +44,34 @@ extension PostDetailsViewController: UITableViewDataSource {
 }
 
 private extension PostDetailsViewController {
+    @objc func commentButtonTapped() {
+        let commentViewController = CommentViewController(postId: post.id, commentCreationHandler: { [weak self] in self?.updateComments() })
+        navigationController?.pushViewController(commentViewController, animated: true)
+    }
+}
+
+private extension PostDetailsViewController {
     func setupNavigationBar() {
         navigationItem.title = LocalizationKey.PostDetails.navigationBarTitle.localized()
+        navigationItem.rightBarButtonItem = UIBarButtonItem.commentItem(target: self, action: #selector(commentButtonTapped))
     }
     
     func setupView() {
         hidesBottomBarWhenPushed = true
-        view.addSubview(postDetailsView)
         view.backgroundColor = .martianLightGrey
+        view.addSubview(postDetailsView)
         postDetailsView.updatePostProperties(title: post.title, body: post.body)
         postDetailsView.tableView.dataSource = self
         postDetailsView.tableView.register(PostDetailsTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier.postDetailsTableViewCell)
-        postDetailsView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+        postDetailsView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
+    }
+    
+    func updateComments() {
+        MartianApiManager.getComments(forPostId: post.id,
+                                      success: { [weak self] comments in
+                                        self?.comments = comments
+                                        self?.postDetailsView.tableView.reloadData() },
+                                      failure: { error in
+                                        print(error.localizedDescription) })
     }
 }
