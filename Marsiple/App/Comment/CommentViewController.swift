@@ -45,7 +45,7 @@ private extension CommentViewController {
                                                             self?.navigationController?.popViewController(animated: true) })
                                         self?.present(alert, animated: true, completion: nil) },
                                       failure: { [weak self] error in
-                                        let message = error.localizedDescription ?? ""
+                                        let message = error.localizedDescription
                                         let alert = UIAlertController
                                             .alertStyle(title: LocalizationKey.Comment.failureAlertTitle.localized(),
                                                         message: LocalizationKey.Comment.failureAlertMessage.localized(message),

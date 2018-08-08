@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
 		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
-		F501C6D32119998E0038C527 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6CF2119998D0038C527 /* AlbumsViewController.swift */; };
-		F501C6D42119998E0038C527 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D02119998E0038C527 /* PhotoCollectionViewCell.swift */; };
-		F501C6D52119998E0038C527 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D12119998E0038C527 /* AlbumsView.swift */; };
-		F501C6D62119998E0038C527 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D22119998E0038C527 /* PhotoCollectionViewController.swift */; };
 		F501C6D9211999C70038C527 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D7211999C70038C527 /* Album.swift */; };
 		F501C6DA211999C70038C527 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D8211999C70038C527 /* Photo.swift */; };
+		F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */; };
+		F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6DF211AEE540038C527 /* AlbumsView.swift */; };
+		F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E0211AEE540038C527 /* AlbumsViewController.swift */; };
+		F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */; };
 		F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9A20FF5695002B5E9E /* MartianApi.swift */; };
 		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
@@ -64,12 +64,12 @@
 		6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsipleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarsipleTests/Pods-MarsipleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
-		F501C6CF2119998D0038C527 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumsViewController.swift; path = "Marsiple/App/New Group/AlbumsViewController.swift"; sourceTree = SOURCE_ROOT; };
-		F501C6D02119998E0038C527 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCollectionViewCell.swift; path = "Marsiple/App/New Group/PhotoCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		F501C6D12119998E0038C527 /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumsView.swift; path = "Marsiple/App/New Group/AlbumsView.swift"; sourceTree = SOURCE_ROOT; };
-		F501C6D22119998E0038C527 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoCollectionViewController.swift; path = "Marsiple/App/New Group/PhotoCollectionViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F501C6D7211999C70038C527 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		F501C6D8211999C70038C527 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		F501C6DF211AEE540038C527 /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		F501C6E0211AEE540038C527 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5072A9A20FF5695002B5E9E /* MartianApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApi.swift; sourceTree = "<group>"; };
 		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
@@ -145,13 +145,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F501C6CE2119993F0038C527 /* Albums */ = {
+		F501C6DD211AEE540038C527 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				F501C6D12119998E0038C527 /* AlbumsView.swift */,
-				F501C6CF2119998D0038C527 /* AlbumsViewController.swift */,
-				F501C6D02119998E0038C527 /* PhotoCollectionViewCell.swift */,
-				F501C6D22119998E0038C527 /* PhotoCollectionViewController.swift */,
+				F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */,
+				F501C6DF211AEE540038C527 /* AlbumsView.swift */,
+				F501C6E0211AEE540038C527 /* AlbumsViewController.swift */,
+				F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Albums;
 			sourceTree = "<group>";
@@ -240,7 +240,7 @@
 				F55050AF20FCB10D001788D0 /* Posts */,
 				F5072AB22101E4F1002B5E9E /* Post Details */,
 				F534E94321063FB200D3F1CE /* Comment */,
-				F501C6CE2119993F0038C527 /* Albums */,
+				F501C6DD211AEE540038C527 /* Albums */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -546,17 +546,19 @@
 				F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */,
 				F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */,
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
+				F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */,
 				F534E9472106407A00D3F1CE /* CommentView.swift in Sources */,
 				F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */,
 				F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */,
 				F5B106D2210B85D1008D12AA /* UIAlertController-Marsiple.swift in Sources */,
+				F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */,
 				F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */,
 				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
 				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
 				F501C6D9211999C70038C527 /* Album.swift in Sources */,
-				F501C6D32119998E0038C527 /* AlbumsViewController.swift in Sources */,
 				F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */,
 				F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */,
+				F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */,
 				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
 				F501C6DA211999C70038C527 /* Photo.swift in Sources */,
 				F534E9402105F09D00D3F1CE /* DataManagerError.swift in Sources */,
@@ -569,10 +571,8 @@
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
-				F501C6D62119998E0038C527 /* PhotoCollectionViewController.swift in Sources */,
-				F501C6D42119998E0038C527 /* PhotoCollectionViewCell.swift in Sources */,
+				F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */,
 				F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */,
-				F501C6D52119998E0038C527 /* AlbumsView.swift in Sources */,
 				F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
