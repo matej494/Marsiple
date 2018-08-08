@@ -15,7 +15,7 @@ class PhotoCollectionViewController: UICollectionViewController {
     init(albumId: Int) {
         self.albumId = albumId
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        DataFetcher.getPhotos(albumId: albumId,
+        MartianApiManager.getPhotos(albumId: albumId,
                               success: { [weak self] photos in
                                 self?.photos = photos
                                 self?.collectionView?.reloadData() },

@@ -22,4 +22,12 @@ class Comment: Codable {
         self.body = body
         self.postId = postId
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(email, forKey: .email)
+        try container.encode(body, forKey: .body)
+        try container.encode(postId, forKey: .postId)
+    }
 }

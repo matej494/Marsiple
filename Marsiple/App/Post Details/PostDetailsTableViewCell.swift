@@ -32,8 +32,6 @@ private extension PostDetailsTableViewCell {
         contentView.addSubview(commentView)
         commentView.backgroundColor = .martianLightGrey
         commentView.titleLabelFontSize = 15
-        commentView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
+        commentView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }
