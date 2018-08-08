@@ -45,7 +45,8 @@ extension PostDetailsViewController: UITableViewDataSource {
 
 private extension PostDetailsViewController {
     @objc func commentButtonTapped() {
-        navigationController?.pushViewController(CommentViewController(postId: post.id, updateComments: updateComments), animated: true)
+        let commentViewController = CommentViewController(postId: post.id, commentCreationHandler: { [weak self] in self?.updateComments() })
+        navigationController?.pushViewController(commentViewController, animated: true)
     }
 }
 

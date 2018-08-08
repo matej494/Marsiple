@@ -9,13 +9,13 @@
 import SnapKit
 
 class CommentViewController: UIViewController {
-    private let updateComments: () -> Void
+    private let commentCreationHandler: () -> Void
     private let postId: Int
     private let commentView = CommentView.autolayoutView()
     
-    init(postId: Int, updateComments: @escaping () -> Void) {
+    init(postId: Int, commentCreationHandler: @escaping () -> Void) {
         self.postId = postId
-        self.updateComments = updateComments
+        self.commentCreationHandler = commentCreationHandler
         super.init(nibName: nil, bundle: nil)
         setupView()
         setupNavigationBar()
@@ -41,7 +41,7 @@ private extension CommentViewController {
                                                         message: LocalizationKey.Comment.successAlertMessage.localized(message),
                                                         cancelActionTitle: LocalizationKey.Comment.okAlertAction.localized(),
                                                         cancelActionHandler: { [weak self] _ in
-                                                            self?.updateComments()
+                                                            self?.commentCreationHandler()
                                                             self?.navigationController?.popViewController(animated: true) })
                                         self?.present(alert, animated: true, completion: nil) },
                                       failure: { [weak self] error in
