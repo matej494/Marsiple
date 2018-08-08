@@ -9,10 +9,8 @@
 import SnapKit
 
 class TodoFormViewController: UIViewController {
-    var todoTextIsEdited: (() -> Void)?
-    var todoCompletedIsEdited: (() -> Void)?
+    var todoHandler: ((Todo) -> Void)?
     private var todo: Todo
-    private let isEditingTodo: Bool
     private let todoFormView = TodoFormView.autolayoutView()
     private lazy var completedButton: UIButton = {
         let button = UIButton()
@@ -25,13 +23,7 @@ class TodoFormViewController: UIViewController {
     }()
     
     init(todo: Todo? = nil) {
-        if let todo = todo {
-            self.todo = todo
-            isEditingTodo = true
-        } else {
-            self.todo = Todo(id: -1, title: "", completed: false, userId: -1)
-            isEditingTodo = false
-        }
+        self.todo = todo ?? Todo(id: -1, title: "", completed: false, userId: -1)
         super.init(nibName: nil, bundle: nil)
         setupView()
     }
@@ -43,22 +35,13 @@ class TodoFormViewController: UIViewController {
 
 private extension TodoFormViewController {
     @objc func completedButtonTapped() {
-        completedButton.isSelected = !completedButton.isSelected
+        todo.completed = !todo.completed
+        completedButton.isSelected = todo.completed
     }
     
     @objc func doneButtonTapped() {
-        // TODO: Save changes on the server
-        if isEditingTodo {
-            if todo.completed != completedButton.isSelected {
-                todo.title = todoFormView.text
-                todoCompletedIsEdited?()
-            } else if todo.title != todoFormView.text {
-                todo.title = todoFormView.text
-                todoTextIsEdited?()
-            }
-        } else {
-            // TODO: Save new todo
-        }
+        todo.title = todoFormView.title
+        todoHandler?(todo)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -79,7 +62,7 @@ private extension TodoFormViewController {
     }
     
     func setupFormView() {
-        todoFormView.placeholder = todo.title
+        todoFormView.title = todo.title
         view.addSubview(todoFormView)
         todoFormView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
     }

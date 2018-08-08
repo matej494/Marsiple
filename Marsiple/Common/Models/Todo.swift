@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Todo {
+struct Todo {
     let id: Int
     var title: String
     var completed: Bool

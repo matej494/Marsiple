@@ -9,22 +9,15 @@
 import SnapKit
 
 class TodoFormView: UIView {
-    var placeholder = LocalizationKey.TodoForm.titlePlaceholder.localized() {
-        didSet {
-            if placeholder.isEmpty {
-                textView.text = LocalizationKey.TodoForm.titlePlaceholder.localized()
-                textView.textColor = .lightGray
-            } else {
-                textView.textColor = .black
-                textView.text = placeholder
-            }
-        }
+    var title: String {
+        get { return textView.text }
+        set { isPlaceholderActive(newValue.isEmpty, newValue: newValue) }
     }
     
-    var text: String { return textView.text }
     private let textView = UITextView.autolayoutView()
     private let keyboardSizedView = UIView.autolayoutView()
-    
+    private let placeholder = LocalizationKey.TodoForm.titlePlaceholder.localized()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -38,16 +31,13 @@ class TodoFormView: UIView {
 
 extension TodoFormView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .lightGray {
-            textView.text = nil
-            textView.textColor = .black
+        if textView.text == placeholder {
+            isPlaceholderActive(false)
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            placeholder = ""
-        }
+        isPlaceholderActive(textView.text.isEmpty, newValue: textView.text)
     }
 }
 
@@ -85,7 +75,7 @@ private extension TodoFormView {
     }
     
     func setupTextView() {
-        placeholder = ""
+        isPlaceholderActive(true)
         textView.font = .systemFont(ofSize: 20)
         textView.delegate = self
         addSubview(textView)
@@ -98,6 +88,16 @@ private extension TodoFormView {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(textView.snp.bottom)
             $0.height.equalTo(0)
+        }
+    }
+    
+    func isPlaceholderActive(_ isActive: Bool, newValue: String? = nil) {
+        if isActive {
+            textView.text = placeholder
+            textView.textColor = .lightGray
+        } else {
+            textView.text = newValue
+            textView.textColor = .black
         }
     }
 }

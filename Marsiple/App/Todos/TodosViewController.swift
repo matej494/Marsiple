@@ -36,7 +36,9 @@ extension TodosViewController: UITableViewDataSource {
         guard let cell = todosView.tableView.dequeueReusableCell(withIdentifier: "TodoTableViewCell", for: indexPath) as? TodoTableViewCell
             else { return UITableViewCell() }
         cell.updateProperties(withTodo: todos[indexPath.section][indexPath.row])
-        cell.didSelectCheckBox = didSelectCheckBox(atIndexPath: indexPath)
+        cell.didSelectCheckBox = { [weak self] in
+            self?.didSelectCheckBox(atIndexPath: indexPath)
+        }
         return cell
     }
 }
@@ -44,8 +46,7 @@ extension TodosViewController: UITableViewDataSource {
 extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let todoFormViewController = TodoFormViewController(todo: todos[indexPath.section][indexPath.row])
-        todoFormViewController.todoCompletedIsEdited = didSelectCheckBox(atIndexPath: indexPath)
-        todoFormViewController.todoTextIsEdited = didChangeText(atIndexPath: indexPath)
+        todoFormViewController.todoHandler = { [weak self] todo in self?.todoIsEdited(atIndexPath: indexPath, newValue: todo) }
         navigationController?.pushViewController(todoFormViewController, animated: true)
     }
     
@@ -60,15 +61,20 @@ extension TodosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             todos[indexPath.section].remove(at: indexPath.row)
-            tableView.performBatchUpdates({ tableView.deleteRows(at: [indexPath], with: .automatic) }
-                , completion: nil)
+            tableView.performBatchUpdates({
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }, completion: { _ in
+                tableView.reloadData()
+            })
         }
     }
 }
 
 private extension TodosViewController {
     @objc func addButtonTapped() {
-        navigationController?.pushViewController(TodoFormViewController(), animated: true)
+        let todoFormViewController = TodoFormViewController()
+        todoFormViewController.todoHandler = { [weak self] todo in self?.todoIsCreated(newTodo: todo) }
+        navigationController?.pushViewController(todoFormViewController, animated: true)
     }
 }
 
@@ -81,9 +87,7 @@ private extension TodosViewController {
         todosView.tableView.delegate = self
         todosView.tableView.estimatedRowHeight = 30
         view.addSubview(todosView)
-        todosView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
-        }
+        todosView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
     }
     
     func setupNavigationBar() {
@@ -101,52 +105,40 @@ private extension TodosViewController {
         return [uncompleted, completed]
     }
     
-    func didSelectCheckBox(atIndexPath indexPath: IndexPath) -> (() -> Void)? {
-        let didSelectCheckBox = { [weak self] in
-            // TODO: Save changes on the server
-            guard let strongSelf = self
-                else { return }
-            
-            let finishIndexPath = IndexPath(row: indexPath.section * strongSelf.todos[1 - indexPath.section].count, section: 1 - indexPath.section)
-            var reloadTableView: (Bool) -> Void
-            let rowsToReload = strongSelf.indexPathsAfter(indexPath: indexPath)
-            if indexPath.section == 0 {
-                reloadTableView = { [weak self] _ in
-                    self?.todosView.tableView.reloadSections([finishIndexPath.section], with: .automatic)
-                    self?.todosView.tableView.reloadRows(at: rowsToReload, with: .automatic)
-                }
-            } else {
-                reloadTableView = { [weak self] _ in
-                    self?.todosView.tableView.reloadRows(at: rowsToReload, with: .automatic)
-                    self?.todosView.tableView.reloadRows(at: [finishIndexPath], with: .automatic)
-                }
-            }
-            
-            let removedTodo = strongSelf.todos[indexPath.section].remove(at: indexPath.row)
-            removedTodo.completed = !removedTodo.completed
-            strongSelf.todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
-            strongSelf.todosView.tableView.performBatchUpdates({
-                strongSelf.todosView.tableView.moveRow(at: indexPath, to: finishIndexPath)
-            }, completion: reloadTableView)
-        }
-        return didSelectCheckBox
+    func didSelectCheckBox(atIndexPath indexPath: IndexPath) {
+        // TODO: Save changes on the server
+        let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+        moveTodo(at: indexPath, to: finishIndexPath)
+        moveRow(at: indexPath, to: finishIndexPath)
     }
     
-    func indexPathsAfter(indexPath: IndexPath) -> [IndexPath] {
-        var indexPaths = [IndexPath]()
-        let maxIndexOfTodos = todos[indexPath.section].count - 2
-        guard indexPath.row <= maxIndexOfTodos else {
-            return []
-        }
-        for i in indexPath.row...maxIndexOfTodos {
-            indexPaths.append(IndexPath(row: i, section: indexPath.section))
-        }
-        return indexPaths
+    func moveTodo(at startIndexPath: IndexPath, to finishIndexPath: IndexPath) {
+        var removedTodo = todos[startIndexPath.section].remove(at: startIndexPath.row)
+        removedTodo.completed = !removedTodo.completed
+        todos[finishIndexPath.section].insert(removedTodo, at: finishIndexPath.row)
     }
     
-    func didChangeText(atIndexPath indexPath: IndexPath) -> (() -> Void)? {
-        return { [weak self] in
-            self?.todosView.tableView.reloadRows(at: [indexPath], with: .automatic)
+    func moveRow(at startIndexPath: IndexPath, to finishIndexPath: IndexPath) {
+        todosView.tableView.performBatchUpdates({
+            todosView.tableView.moveRow(at: startIndexPath, to: finishIndexPath)
+        }, completion: { [weak self] _ in
+            self?.todosView.tableView.reloadData()
+        })
+    }
+
+    func todoIsEdited(atIndexPath indexPath: IndexPath, newValue todo: Todo) {
+        // TODO: Save changes on the server
+        todos[indexPath.section][indexPath.row].title = todo.title
+        if todos[indexPath.section][indexPath.row].completed != todo.completed {
+            let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
+            moveTodo(at: indexPath, to: finishIndexPath)
         }
+        todosView.tableView.reloadData()
+    }
+    
+    func todoIsCreated(newTodo todo: Todo) {
+        // TODO: Save changes on the server
+        todo.completed ? todos[1].insert(todo, at: 0) : todos[0].insert(todo, at: todos[0].count)
+        todosView.tableView.reloadData()
     }
 }
