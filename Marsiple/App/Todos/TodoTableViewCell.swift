@@ -9,8 +9,9 @@
 import SnapKit
 
 class TodoTableViewCell: UITableViewCell {
-    private let checkBoxImageView = UIImageView.autolayoutView()
+    var didSelectCheckBox: (() -> Void)?
     private let todoLabel = UILabel.autolayoutView()
+    private let checkBoxButton = UIButton.autolayoutView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,7 +25,7 @@ class TodoTableViewCell: UITableViewCell {
 
 extension TodoTableViewCell {
     func updateProperties(withTodo todo: Todo) {
-        checkBoxImageView.image = todo.completed ? #imageLiteral(resourceName: "checkbox-selected") : #imageLiteral(resourceName: "checkbox-unselected")
+        checkBoxButton.isSelected = todo.completed
         if todo.completed {
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: todo.title)
             attributeString.addAttribute(.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -37,27 +38,32 @@ extension TodoTableViewCell {
 }
 
 private extension TodoTableViewCell {
+    @objc func checkBoxButtonPressed() {
+        didSelectCheckBox?()
+    }
+}
+
+private extension TodoTableViewCell {
     func setupViews() {
         setupTodoLabel()
-        setupCheckBoxImageView()
+        setupCheckBoxButton()
     }
     
     func setupTodoLabel() {
         contentView.addSubview(todoLabel)
-        todoLabel.snp.makeConstraints {
-            $0.leading.top.bottom.equalToSuperview().inset(10)
-        }
+        todoLabel.snp.makeConstraints { $0.leading.top.bottom.equalToSuperview().inset(10) }
     }
     
-    func setupCheckBoxImageView() {
-        checkBoxImageView.contentMode = .scaleAspectFit
-        checkBoxImageView.clipsToBounds = true
-        checkBoxImageView.image = #imageLiteral(resourceName: "checkbox-unselected")
-        contentView.addSubview(checkBoxImageView)
-        checkBoxImageView.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
-        checkBoxImageView.snp.makeConstraints {
-            $0.leading.equalTo(todoLabel.snp.trailing).inset(-10)
+    func setupCheckBoxButton() {
+        checkBoxButton.setImage(#imageLiteral(resourceName: "checkbox-unselected"), for: .normal)
+        checkBoxButton.setImage(#imageLiteral(resourceName: "checkbox-selected"), for: .selected)
+        checkBoxButton.isSelected = false
+        checkBoxButton.addTarget(self, action: #selector(checkBoxButtonPressed), for: .touchDown)
+        contentView.addSubview(checkBoxButton)
+        checkBoxButton.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
+        checkBoxButton.snp.makeConstraints {
             $0.top.trailing.bottom.equalToSuperview().inset(10)
+            $0.leading.equalTo(todoLabel.snp.trailing)
             $0.height.width.equalTo(20)
         }
     }
