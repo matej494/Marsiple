@@ -9,16 +9,26 @@
 /* Begin PBXBuildFile section */
 		984B21134D5FB2BC0FB0C2AE /* Pods_MarsipleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */; };
 		E3754DAB879527D390014039 /* Pods_Marsiple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6021C7677C9DBC963ABB0F09 /* Pods_Marsiple.framework */; };
+		F501C6D9211999C70038C527 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D7211999C70038C527 /* Album.swift */; };
+		F501C6DA211999C70038C527 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6D8211999C70038C527 /* Photo.swift */; };
+		F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */; };
+		F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6DF211AEE540038C527 /* AlbumsView.swift */; };
+		F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E0211AEE540038C527 /* AlbumsViewController.swift */; };
+		F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */; };
 		F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9A20FF5695002B5E9E /* MartianApi.swift */; };
 		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
 		F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */; };
-		F5403D3C2109D848003D5088 /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5403D3B2109D848003D5088 /* TodosViewController.swift */; };
-		F5403D3E2109D862003D5088 /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5403D3D2109D862003D5088 /* TodosView.swift */; };
-		F5447C7B210EFB14001A20F2 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5447C7A210EFB14001A20F2 /* Todo.swift */; };
-		F54873D121109274001B3D6F /* TodoFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D021109274001B3D6F /* TodoFormViewController.swift */; };
-		F54873D321109293001B3D6F /* TodoFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D221109293001B3D6F /* TodoFormView.swift */; };
-		F54873D92112F3AE001B3D6F /* TodosIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54873D82112F3AE001B3D6F /* TodosIndex.swift */; };
+		F5072AB42101E51B002B5E9E /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB32101E51B002B5E9E /* PostDetailsViewController.swift */; };
+		F5072AB62101E62C002B5E9E /* PostDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB52101E62C002B5E9E /* PostDetailsView.swift */; };
+		F5072AB82101EB1E002B5E9E /* TitleAndBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB72101EB1E002B5E9E /* TitleAndBodyView.swift */; };
+		F5072ABA2101F0B3002B5E9E /* PostDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AB92101F0B3002B5E9E /* PostDetailsTableViewCell.swift */; };
+		F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072ABB2101FDB5002B5E9E /* Comment.swift */; };
+		F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */; };
+		F534E9402105F09D00D3F1CE /* DataManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E93F2105F09D00D3F1CE /* DataManagerError.swift */; };
+		F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9412105F35200D3F1CE /* MartianApiManager.swift */; };
+		F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E94421063FD300D3F1CE /* CommentViewController.swift */; };
+		F534E9472106407A00D3F1CE /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9462106407A00D3F1CE /* CommentView.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -28,8 +38,9 @@
 		F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BD20FCF84E001788D0 /* LocalizationKey.swift */; };
 		F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050BF20FCF982001788D0 /* String-Marsiple.swift */; };
 		F55050C520FD0181001788D0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C420FD0181001788D0 /* TabBarController.swift */; };
-		F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050C820FE05AF001788D0 /* PostsFetcher.swift */; };
-		F5B106CE2109D9FA008D12AA /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B106CD2109D9FA008D12AA /* TodoTableViewCell.swift */; };
+		F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */; };
+		F5B106D0210B6478008D12AA /* HTTPResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B106CF210B6478008D12AA /* HTTPResponseCode.swift */; };
+		F5B106D2210B85D1008D12AA /* UIAlertController-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B106D1210B85D1008D12AA /* UIAlertController-Marsiple.swift */; };
 		F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47A9720FC8797007184ED /* AppDelegate.swift */; };
 		F5E47A9F20FC8798007184ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5E47A9E20FC8798007184ED /* Assets.xcassets */; };
 		F5E47AAD20FC8798007184ED /* MarsipleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E47AAC20FC8798007184ED /* MarsipleTests.swift */; };
@@ -53,16 +64,26 @@
 		6281ECE3AAE73F06DDAD88FB /* Pods-MarsipleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsipleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarsipleTests/Pods-MarsipleTests.release.xcconfig"; sourceTree = "<group>"; };
 		D59BD9DA2DEC0C8E866341F2 /* Pods_MarsipleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsipleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD4BAF21888EE1B071B8FEA3 /* Pods-Marsiple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Marsiple.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Marsiple/Pods-Marsiple.debug.xcconfig"; sourceTree = "<group>"; };
+		F501C6D7211999C70038C527 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		F501C6D8211999C70038C527 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		F501C6DF211AEE540038C527 /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
+		F501C6E0211AEE540038C527 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F5072A9A20FF5695002B5E9E /* MartianApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApi.swift; sourceTree = "<group>"; };
 		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
 		F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestHeader.swift; sourceTree = "<group>"; };
-		F5403D3B2109D848003D5088 /* TodosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
-		F5403D3D2109D862003D5088 /* TodosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
-		F5447C7A210EFB14001A20F2 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		F54873D021109274001B3D6F /* TodoFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormViewController.swift; sourceTree = "<group>"; };
-		F54873D221109293001B3D6F /* TodoFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormView.swift; sourceTree = "<group>"; };
-		F54873D82112F3AE001B3D6F /* TodosIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosIndex.swift; sourceTree = "<group>"; };
+		F5072AB32101E51B002B5E9E /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
+		F5072AB52101E62C002B5E9E /* PostDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsView.swift; sourceTree = "<group>"; };
+		F5072AB72101EB1E002B5E9E /* TitleAndBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAndBodyView.swift; sourceTree = "<group>"; };
+		F5072AB92101F0B3002B5E9E /* PostDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		F5072ABB2101FDB5002B5E9E /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellReuseIdentifier.swift; sourceTree = "<group>"; };
+		F534E93F2105F09D00D3F1CE /* DataManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerError.swift; sourceTree = "<group>"; };
+		F534E9412105F35200D3F1CE /* MartianApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApiManager.swift; sourceTree = "<group>"; };
+		F534E94421063FD300D3F1CE /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		F534E9462106407A00D3F1CE /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -72,8 +93,9 @@
 		F55050BD20FCF84E001788D0 /* LocalizationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKey.swift; sourceTree = "<group>"; };
 		F55050BF20FCF982001788D0 /* String-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Marsiple.swift"; sourceTree = "<group>"; };
 		F55050C420FD0181001788D0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		F55050C820FE05AF001788D0 /* PostsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFetcher.swift; sourceTree = "<group>"; };
-		F5B106CD2109D9FA008D12AA /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Marsiple.swift"; sourceTree = "<group>"; };
+		F5B106CF210B6478008D12AA /* HTTPResponseCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseCode.swift; sourceTree = "<group>"; };
+		F5B106D1210B85D1008D12AA /* UIAlertController-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController-Marsiple.swift"; sourceTree = "<group>"; };
 		F5E47A9420FC8797007184ED /* Marsiple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marsiple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E47A9720FC8797007184ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5E47A9E20FC8798007184ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,24 +145,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F5403D3A2109D824003D5088 /* Todos */ = {
+		F501C6DD211AEE540038C527 /* Albums */ = {
 			isa = PBXGroup;
 			children = (
-				F5403D3B2109D848003D5088 /* TodosViewController.swift */,
-				F5403D3D2109D862003D5088 /* TodosView.swift */,
-				F5B106CD2109D9FA008D12AA /* TodoTableViewCell.swift */,
-				F54873D82112F3AE001B3D6F /* TodosIndex.swift */,
+				F501C6DE211AEE540038C527 /* PhotoCollectionViewController.swift */,
+				F501C6DF211AEE540038C527 /* AlbumsView.swift */,
+				F501C6E0211AEE540038C527 /* AlbumsViewController.swift */,
+				F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */,
 			);
-			path = Todos;
+			path = Albums;
 			sourceTree = "<group>";
 		};
-		F54873CF21109244001B3D6F /* Todo Form */ = {
+		F5072AB22101E4F1002B5E9E /* Post Details */ = {
 			isa = PBXGroup;
 			children = (
-				F54873D021109274001B3D6F /* TodoFormViewController.swift */,
-				F54873D221109293001B3D6F /* TodoFormView.swift */,
+				F5072AB32101E51B002B5E9E /* PostDetailsViewController.swift */,
+				F5072AB52101E62C002B5E9E /* PostDetailsView.swift */,
+				F5072AB92101F0B3002B5E9E /* PostDetailsTableViewCell.swift */,
 			);
-			path = "Todo Form";
+			path = "Post Details";
+			sourceTree = "<group>";
+		};
+		F534E94321063FB200D3F1CE /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				F534E94421063FD300D3F1CE /* CommentViewController.swift */,
+				F534E9462106407A00D3F1CE /* CommentView.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		F55050AF20FCB10D001788D0 /* Posts */ = {
@@ -206,8 +238,9 @@
 				F5E47A9720FC8797007184ED /* AppDelegate.swift */,
 				F55050C320FCFFE4001788D0 /* Tab Bar */,
 				F55050AF20FCB10D001788D0 /* Posts */,
-				F5403D3A2109D824003D5088 /* Todos */,
-				F54873CF21109244001B3D6F /* Todo Form */,
+				F5072AB22101E4F1002B5E9E /* Post Details */,
+				F534E94321063FB200D3F1CE /* Comment */,
+				F501C6DD211AEE540038C527 /* Albums */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -264,6 +297,8 @@
 				F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */,
 				F55050BF20FCF982001788D0 /* String-Marsiple.swift */,
 				F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */,
+				F5B106D1210B85D1008D12AA /* UIAlertController-Marsiple.swift */,
+				F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,8 +306,10 @@
 		F5E47ABE20FC8908007184ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F501C6D7211999C70038C527 /* Album.swift */,
+				F501C6D8211999C70038C527 /* Photo.swift */,
 				F55050B620FCB395001788D0 /* Post.swift */,
-				F5447C7A210EFB14001A20F2 /* Todo.swift */,
+				F5072ABB2101FDB5002B5E9E /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,10 +317,12 @@
 		F5E47ABF20FC890E007184ED /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F55050C820FE05AF001788D0 /* PostsFetcher.swift */,
+				F534E9412105F35200D3F1CE /* MartianApiManager.swift */,
+				F534E93F2105F09D00D3F1CE /* DataManagerError.swift */,
 				F5072A9A20FF5695002B5E9E /* MartianApi.swift */,
 				F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */,
 				F5072AAA20FF83B7002B5E9E /* HTTPRequestHeader.swift */,
+				F5B106CF210B6478008D12AA /* HTTPResponseCode.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -291,6 +330,8 @@
 		F5E47AC020FC8919007184ED /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F5072AB72101EB1E002B5E9E /* TitleAndBodyView.swift */,
+				F534E9392103498D00D3F1CE /* CellReuseIdentifier.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -501,26 +542,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5072ABA2101F0B3002B5E9E /* PostDetailsTableViewCell.swift in Sources */,
+				F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */,
+				F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */,
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
+				F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */,
+				F534E9472106407A00D3F1CE /* CommentView.swift in Sources */,
 				F55050C020FCF982001788D0 /* String-Marsiple.swift in Sources */,
 				F55050BE20FCF84E001788D0 /* LocalizationKey.swift in Sources */,
+				F5B106D2210B85D1008D12AA /* UIAlertController-Marsiple.swift in Sources */,
+				F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */,
+				F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */,
 				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
 				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
-				F54873D121109274001B3D6F /* TodoFormViewController.swift in Sources */,
-				F54873D321109293001B3D6F /* TodoFormView.swift in Sources */,
+				F501C6D9211999C70038C527 /* Album.swift in Sources */,
 				F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */,
+				F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */,
+				F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */,
 				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
+				F501C6DA211999C70038C527 /* Photo.swift in Sources */,
+				F534E9402105F09D00D3F1CE /* DataManagerError.swift in Sources */,
+				F5072AB62101E62C002B5E9E /* PostDetailsView.swift in Sources */,
+				F5B106D0210B6478008D12AA /* HTTPResponseCode.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
-				F55050C920FE05AF001788D0 /* PostsFetcher.swift in Sources */,
+				F5072AB82101EB1E002B5E9E /* TitleAndBodyView.swift in Sources */,
+				F5072AB42101E51B002B5E9E /* PostDetailsViewController.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
-				F5B106CE2109D9FA008D12AA /* TodoTableViewCell.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
-				F5447C7B210EFB14001A20F2 /* Todo.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
-				F5403D3C2109D848003D5088 /* TodosViewController.swift in Sources */,
-				F5403D3E2109D862003D5088 /* TodosView.swift in Sources */,
-				F54873D92112F3AE001B3D6F /* TodosIndex.swift in Sources */,
+				F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */,
+				F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */,
 				F55050B920FCB822001788D0 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

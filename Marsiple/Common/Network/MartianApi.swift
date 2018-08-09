@@ -12,7 +12,12 @@ struct MartianApi {
     static let url = URL(string: "https://demo.martian.agency/api")
     
     struct Headers {
-        static let contentTypeValue = "application/json"
+        static let defaultContentType = "application/json"
         static let xAuthValue = "bWFydGlhbmFuZG1hY2hpbmU="
+    }
+    
+    struct URLs {
+        static let posts = "posts"
+        static let comments = "comments"
     }
 }

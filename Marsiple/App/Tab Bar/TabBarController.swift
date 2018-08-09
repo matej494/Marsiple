@@ -13,7 +13,7 @@ class TabBarController: UITabBarController {
         super.init(nibName: nil, bundle: nil)
         setupViews()
     }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
 private extension TabBarController {
     func setupViews() {
         setupTabBar()
-        let viewControllerList = [PostsViewController(), TodosViewController()]
+        let viewControllerList = [PostsViewController(), AlbumsViewController(), TodosViewController()]
         viewControllers = viewControllerList.map {
             let navigationController = UINavigationController(rootViewController: $0)
             navigationController.navigationBar.prefersLargeTitles = true

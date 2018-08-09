@@ -29,7 +29,7 @@ private extension PostsView {
     
     func setupTableview() {
         tableView.backgroundColor = .martianLightGrey
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: CellReuseIdentifier.postTableViewCell)
         addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
