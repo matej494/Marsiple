@@ -44,12 +44,6 @@ extension PostsViewController: UITableViewDelegate {
     }
 }
 
-extension PostsViewController: PostsViewModelDelegate {
-    func didFetchPosts(viewModels: [PostTableViewCell.ViewModel]) {
-        postsView.tableView.reloadData()
-    }
-}
-
 private extension PostsViewController {
     func setupView() {
         title = LocalizationKey.Posts.navigationBarTitle.localized()
