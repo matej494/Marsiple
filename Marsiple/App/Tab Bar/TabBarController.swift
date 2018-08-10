@@ -22,7 +22,10 @@ class TabBarController: UITabBarController {
 private extension TabBarController {
     func setupViews() {
         setupTabBar()
-        let viewControllerList = [PostsViewController(), AlbumsViewController(), TodosViewController()]
+        let viewControllerList = [
+            PostsViewController(viewModel: PostsViewModelImpl()),
+            AlbumsViewController(),
+            TodosViewController()]
         viewControllers = viewControllerList.map {
             let navigationController = UINavigationController(rootViewController: $0)
             navigationController.navigationBar.prefersLargeTitles = true

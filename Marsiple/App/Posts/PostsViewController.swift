@@ -9,18 +9,15 @@
 import SnapKit
 
 class PostsViewController: UIViewController {
-    private var posts: [Post] = []
+    let viewModel: PostsViewModel
     private let postsView = PostsView.autolayoutView()
     
-    init() {
+    init(viewModel: PostsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         setupView()
-        MartianApiManager.getPosts(success: { [weak self] posts in
-            self?.posts = posts
-            self?.postsView.tableView.reloadData()
-        }, failure: { error in
-            print(error.localizedDescription)
-        })
+        setupCallbacks()
+        viewModel.fetchPosts()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,21 +27,26 @@ class PostsViewController: UIViewController {
 
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return viewModel.numberOfRows(inSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseIdentifier.postTableViewCell, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-        let post = posts[indexPath.row]
-        cell.updateCell(title: post.title, body: post.body)
+        let viewModel = self.viewModel.viewModel(atIndexPath: indexPath)
+        cell.update(viewModel)
         return cell
     }
 }
 
 extension PostsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let postDetailsViewController = PostDetailsViewController(post: posts[indexPath.row])
-        navigationController?.pushViewController(postDetailsViewController, animated: true)
+        viewModel.selectRow(atIndexPath: indexPath)
+    }
+}
+
+extension PostsViewController: PostsViewModelDelegate {
+    func didFetchPosts(viewModels: [PostTableViewCell.ViewModel]) {
+        postsView.tableView.reloadData()
     }
 }
 
@@ -57,6 +59,17 @@ private extension PostsViewController {
         postsView.tableView.delegate = self
         postsView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    func setupCallbacks() {
+        viewModel.postCellViewModels.bind { [weak self] _ in
+            self?.postsView.tableView.reloadData()            
+        }
+        viewModel.selectedPost.bind { [weak self] post in
+            guard let post = post else { return }
+            let postDetailsViewController = PostDetailsViewController(post: post)
+            self?.navigationController?.pushViewController(postDetailsViewController, animated: true)
         }
     }
 }

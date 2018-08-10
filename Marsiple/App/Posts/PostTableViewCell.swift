@@ -9,6 +9,7 @@
 import SnapKit
 
 class PostTableViewCell: UITableViewCell {
+    typealias ViewModel = (title: String, body: String)
     private let postView = TitleAndBodyView.autolayoutView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -22,6 +23,10 @@ class PostTableViewCell: UITableViewCell {
 }
 
 extension PostTableViewCell {
+    func update(_ viewModel: ViewModel) {
+        postView.updateProperties(title: viewModel.title, body: viewModel.body)
+    }
+    
     func updateCell(title: String, body: String) {
         postView.updateProperties(title: title, body: body)
     }
