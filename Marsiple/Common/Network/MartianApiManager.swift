@@ -41,9 +41,18 @@ class MartianApiManager {
     
     static func getPhotos(albumId: Int, success: @escaping ([Photo]) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let url = MartianApi.url?
-            .appendingPathComponent("albums")
+            .appendingPathComponent(MartianApi.URLs.albums)
             .appendingPathComponent("\(albumId)")
-            .appendingPathComponent("photos")
+            .appendingPathComponent(MartianApi.URLs.photos)
+            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
+        getData(url: url, success: success, failure: failure)
+    }
+    
+    static func getTodos(userId: Int, success: @escaping ([Todo]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = MartianApi.url?
+            .appendingPathComponent(MartianApi.URLs.users)
+            .appendingPathComponent("\(userId)")
+            .appendingPathComponent(MartianApi.URLs.todos)
             else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
         getData(url: url, success: success, failure: failure)
     }

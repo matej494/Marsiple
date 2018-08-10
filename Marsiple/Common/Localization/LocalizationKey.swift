@@ -21,6 +21,11 @@ struct LocalizationKey {
         static let castingResponseFailure = "data_manager_casting_response_failure"
     }
     
+    struct Todos {
+        static let navigationBarTitle = "todos_navigation_bar_title"
+        static let completedSectionHeader = "todos_completed_section_header"
+    }
+
     struct PostDetails {
         static let navigationBarTitle = "post_details_navigation_bar_title"
     }

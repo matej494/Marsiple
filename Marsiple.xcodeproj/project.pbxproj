@@ -15,6 +15,10 @@
 		F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6DF211AEE540038C527 /* AlbumsView.swift */; };
 		F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E0211AEE540038C527 /* AlbumsViewController.swift */; };
 		F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */; };
+		F501C6EA211B1CE30038C527 /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E7211B1CE20038C527 /* TodosViewController.swift */; };
+		F501C6EB211B1CE30038C527 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E8211B1CE20038C527 /* TodoTableViewCell.swift */; };
+		F501C6EC211B1CE30038C527 /* TodosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6E9211B1CE20038C527 /* TodosView.swift */; };
+		F501C6EE211B1D160038C527 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F501C6ED211B1D160038C527 /* Todo.swift */; };
 		F5072A9B20FF5695002B5E9E /* MartianApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072A9A20FF5695002B5E9E /* MartianApi.swift */; };
 		F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */; };
 		F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */; };
@@ -70,6 +74,10 @@
 		F501C6DF211AEE540038C527 /* AlbumsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		F501C6E0211AEE540038C527 /* AlbumsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		F501C6E7211B1CE20038C527 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
+		F501C6E8211B1CE20038C527 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		F501C6E9211B1CE20038C527 /* TodosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosView.swift; sourceTree = "<group>"; };
+		F501C6ED211B1D160038C527 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		F5072A9A20FF5695002B5E9E /* MartianApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApi.swift; sourceTree = "<group>"; };
 		F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Marsiple.swift"; sourceTree = "<group>"; };
 		F5072AA820FF7E09002B5E9E /* HTTPRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestMethod.swift; sourceTree = "<group>"; };
@@ -154,6 +162,16 @@
 				F501C6E1211AEE540038C527 /* PhotoCollectionViewCell.swift */,
 			);
 			path = Albums;
+			sourceTree = "<group>";
+		};
+		F501C6E6211B1CE20038C527 /* Todos */ = {
+			isa = PBXGroup;
+			children = (
+				F501C6E7211B1CE20038C527 /* TodosViewController.swift */,
+				F501C6E8211B1CE20038C527 /* TodoTableViewCell.swift */,
+				F501C6E9211B1CE20038C527 /* TodosView.swift */,
+			);
+			path = Todos;
 			sourceTree = "<group>";
 		};
 		F5072AB22101E4F1002B5E9E /* Post Details */ = {
@@ -241,6 +259,7 @@
 				F5072AB22101E4F1002B5E9E /* Post Details */,
 				F534E94321063FB200D3F1CE /* Comment */,
 				F501C6DD211AEE540038C527 /* Albums */,
+				F501C6E6211B1CE20038C527 /* Todos */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -306,6 +325,7 @@
 		F5E47ABE20FC8908007184ED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F501C6ED211B1D160038C527 /* Todo.swift */,
 				F501C6D7211999C70038C527 /* Album.swift */,
 				F501C6D8211999C70038C527 /* Photo.swift */,
 				F55050B620FCB395001788D0 /* Post.swift */,
@@ -553,6 +573,7 @@
 				F5B106D2210B85D1008D12AA /* UIAlertController-Marsiple.swift in Sources */,
 				F501C6E5211AEE540038C527 /* PhotoCollectionViewCell.swift in Sources */,
 				F534E93A2103498D00D3F1CE /* CellReuseIdentifier.swift in Sources */,
+				F501C6EB211B1CE30038C527 /* TodoTableViewCell.swift in Sources */,
 				F55050C520FD0181001788D0 /* TabBarController.swift in Sources */,
 				F5072AA920FF7E09002B5E9E /* HTTPRequestMethod.swift in Sources */,
 				F501C6D9211999C70038C527 /* Album.swift in Sources */,
@@ -564,12 +585,15 @@
 				F534E9402105F09D00D3F1CE /* DataManagerError.swift in Sources */,
 				F5072AB62101E62C002B5E9E /* PostDetailsView.swift in Sources */,
 				F5B106D0210B6478008D12AA /* HTTPResponseCode.swift in Sources */,
+				F501C6EA211B1CE30038C527 /* TodosViewController.swift in Sources */,
 				F5E47A9820FC8797007184ED /* AppDelegate.swift in Sources */,
 				F5072AB82101EB1E002B5E9E /* TitleAndBodyView.swift in Sources */,
 				F5072AB42101E51B002B5E9E /* PostDetailsViewController.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
+				F501C6EC211B1CE30038C527 /* TodosView.swift in Sources */,
+				F501C6EE211B1D160038C527 /* Todo.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
 				F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */,
 				F56909C721089303009E23F2 /* UIBarButtonItem-Marsiple.swift in Sources */,

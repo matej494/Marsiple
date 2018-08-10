@@ -16,6 +16,10 @@
 "data_manager_data_encoding_failure" = "Error encoding data.";
 "data_manager_casting_response_failure" = "Error casting response";
 
+/* Todos */
+"todos_navigation_bar_title" = "Todos";
+"todos_completed_section_header" = "Completed";
+
 /* Post Details */
 "post_details_navigation_bar_title" = "Post details";
 
