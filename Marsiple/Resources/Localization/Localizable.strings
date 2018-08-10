@@ -23,18 +23,14 @@
 /* TodoForm */
 "todo_navigation_bar_title" = "Todo";
 "todo_view_form_title_placeholder" = "Todo text...";
+"success_alert_title" = "Todo uploaded";
+
 /* Post Details */
 "post_details_navigation_bar_title" = "Post details";
 
 /* Commnet */
 "comment_navigation_bar_title" = "Comment";
 "success_alert_title" = "Comment uploaded";
-"success_alert_message" = "Response: %@";
-"failure_alert_title" = "Something went wrong";
-"failure_alert_message" = "Response: %@";
-"ok_alert_action" = "Ok";
-"cancel_alert_action" = "Cancel";
-"stay_here_alert_action" = "Stay here";
 "comment_text_placeholder" = "Comment...";
 
 /* HTTPResponseCodes */
@@ -53,3 +49,12 @@
 /* BarButtonItems */
 "save_bar_button_title" = "Save";
 "comment_bar_button_title" = "Comment";
+
+/* Alert */
+"success_alert_message" = "Response: %@";
+"failure_alert_title" = "Something went wrong";
+"failure_alert_message" = "Response: %@";
+"ok_alert_action" = "Ok";
+"cancel_alert_action" = "Cancel";
+"stay_here_alert_action" = "Stay here";
+

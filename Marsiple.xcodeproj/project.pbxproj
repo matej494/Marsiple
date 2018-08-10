@@ -173,8 +173,8 @@
 		F501C6EF211C78F80038C527 /* Todo Form */ = {
 			isa = PBXGroup;
 			children = (
-				F501C6F0211C78F80038C527 /* TodoFormView.swift */,
 				F501C6F1211C78F80038C527 /* TodoFormViewController.swift */,
+				F501C6F0211C78F80038C527 /* TodoFormView.swift */,
 			);
 			path = "Todo Form";
 			sourceTree = "<group>";

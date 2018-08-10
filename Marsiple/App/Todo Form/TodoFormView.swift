@@ -10,7 +10,7 @@ import SnapKit
 
 class TodoFormView: UIView {
     var title: String {
-        get { return textView.text }
+        get { return textView.text == placeholder ? "" : textView.text }
         set { isPlaceholderActive(newValue.isEmpty, text: newValue) }
     }
     
