@@ -8,7 +8,10 @@
 
 import Foundation
 
-class Post: Codable {
+class Post: Codable, Identifiable, Pathable {
+    static let path = MartianApi.URLs.posts
+    static let parentPath = MartianApi.URLs.users
+
     let id: Int
     let title: String
     let body: String

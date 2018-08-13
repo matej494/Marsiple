@@ -9,12 +9,12 @@
 import SnapKit
 
 class TodosViewController: UIViewController {
-    // TODO: Replace todos with real data
-    private lazy var todos = setupTodos()
+    private lazy var todos = [[Todo]]()
     private let todosView = TodosView.autolayoutView()
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        setupTodos()
         setupView()
     }
     
@@ -94,22 +94,35 @@ private extension TodosViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
     
-    // NOTE: This is just temporary, until network is implemented
-    func setupTodos() -> [[Todo]] {
-        var uncompleted = [Todo]()
-        var completed = [Todo]()
-        for i in 0...9 {
-            uncompleted.append(Todo(id: i, title: "Todo \(0)\(i)", completed: false, userId: -1))
-            completed.append(Todo(id: i, title: "Todo \(1)\(i)", completed: true, userId: -1))
-        }
-        return [uncompleted, completed]
+    func setupTodos() {
+        // NOTE: userId is used so app is testable (if all todos are downloaded it would be hard to see what's happening)
+        MartianApiManager<Todo>.getData(withParentId: 2,
+                                        success: { [weak self] todos in
+                                            self?.todos.append(todos.filter({ $0.completed == false }))
+                                            self?.todos.append(todos.filter({ $0.completed }))
+                                            self?.todosView.tableView.reloadData() },
+                                        failure: { error in
+                                            print(error.localizedDescription)
+        })
     }
-    
+
     func didSelectCheckBox(atIndexPath indexPath: IndexPath) {
-        // TODO: Save changes on the server
-        let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
-        moveTodo(at: indexPath, to: finishIndexPath)
-        moveRow(at: indexPath, to: finishIndexPath)
+        var todo = todos[indexPath.section][indexPath.row]
+        todo.completed = !todo.completed
+        MartianApiManager<Todo>.patchData(data: todo,
+                                          success: { [weak self] _ in
+                                            guard let todoCount = self?.todos[1 - indexPath.section].count else { return }
+                                            let finishIndexPath = IndexPath(row: indexPath.section * todoCount, section: 1 - indexPath.section)
+                                            self?.moveTodo(at: indexPath, to: finishIndexPath)
+                                            self?.moveRow(at: indexPath, to: finishIndexPath) },
+                                          failure: { [weak self] error in
+                                            let message = error.localizedDescription
+                                            let alert = UIAlertController
+                                                .alertStyle(title: LocalizationKey.Alert.failureAlertTitle.localized(),
+                                                            message: LocalizationKey.Alert.failureAlertMessage.localized(message),
+                                                            cancelActionTitle: LocalizationKey.Alert.cancelAlertAction.localized(),
+                                                            cancelActionHandler: nil)
+                                            self?.present(alert, animated: true, completion: nil) })
     }
     
     func moveTodo(at startIndexPath: IndexPath, to finishIndexPath: IndexPath) {
@@ -128,7 +141,6 @@ private extension TodosViewController {
     }
 
     func todoIsEdited(atIndexPath indexPath: IndexPath, newValue todo: Todo) {
-        // TODO: Save changes on the server
         todos[indexPath.section][indexPath.row].title = todo.title
         if todos[indexPath.section][indexPath.row].completed != todo.completed {
             let finishIndexPath = IndexPath(row: indexPath.section * todos[1 - indexPath.section].count, section: 1 - indexPath.section)
@@ -138,7 +150,6 @@ private extension TodosViewController {
     }
     
     func todoIsCreated(newTodo todo: Todo) {
-        // TODO: Save changes on the server
         todo.completed ? todos[1].insert(todo, at: 0) : todos[0].insert(todo, at: todos[0].count)
         todosView.tableView.reloadData()
     }

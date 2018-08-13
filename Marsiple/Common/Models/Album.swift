@@ -8,7 +8,10 @@
 
 import UIKit
 
-struct Album: Codable {
+struct Album: Codable, Identifiable, Pathable {
+    static let path = MartianApi.URLs.albums
+    static let parentPath = MartianApi.URLs.users
+    
     let userId: Int
     let id: Int
     let title: String

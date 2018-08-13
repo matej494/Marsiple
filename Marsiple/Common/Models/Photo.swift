@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct Photo: Codable {
+struct Photo: Codable, Identifiable, Pathable {
+    static let path = MartianApi.URLs.photos
+    static let parentPath = MartianApi.URLs.albums
+
     let albumId: Int
     let id: Int
     let title: String

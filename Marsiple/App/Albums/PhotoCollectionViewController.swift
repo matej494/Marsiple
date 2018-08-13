@@ -15,12 +15,12 @@ class PhotoCollectionViewController: UICollectionViewController {
     init(albumId: Int) {
         self.albumId = albumId
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
-        MartianApiManager.getPhotos(albumId: albumId,
-                              success: { [weak self] photos in
-                                self?.photos = photos
-                                self?.collectionView?.reloadData() },
-                              failure: { error in
-                                print(error.localizedDescription)
+        MartianApiManager<Photo>.getData(withParentId: albumId,
+                                         success: { [weak self] photos in
+                                            self?.photos = photos
+                                            self?.collectionView?.reloadData() },
+                                         failure: { error in
+                                            print(error.localizedDescription)
         })
         setupView()
     }

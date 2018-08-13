@@ -17,7 +17,7 @@ class AlbumsViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        MartianApiManager.getAlbums(success: { [weak self] albums in
+        MartianApiManager<Album>.getData(success: { [weak self] albums in
             self?.albums = albums
             self?.albumsView.tableView.reloadData()
         }, failure: { error in

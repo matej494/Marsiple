@@ -10,6 +10,8 @@ import SnapKit
 
 class TodoFormViewController: UIViewController {
     var todoHandler: ((Todo) -> Void)?
+    private let isEditingTodo: Bool
+    private let originalTodo: Todo
     private var todo: Todo
     private let todoFormView = TodoFormView.autolayoutView()
     private lazy var completedButton: UIButton = {
@@ -23,7 +25,9 @@ class TodoFormViewController: UIViewController {
     }()
     
     init(todo: Todo? = nil) {
-        self.todo = todo ?? Todo(id: -1, title: "", completed: false, userId: -1)
+        self.todo = todo ?? Todo(id: -1, title: "", completed: false, userId: 2)
+        self.originalTodo = self.todo
+        self.isEditingTodo = todo != nil
         super.init(nibName: nil, bundle: nil)
         setupView()
     }
@@ -41,8 +45,23 @@ private extension TodoFormViewController {
     
     @objc func doneButtonTapped() {
         todo.title = todoFormView.title
-        todoHandler?(todo)
-        navigationController?.popViewController(animated: true)
+        if originalTodo == todo || todo.title.isEmpty {
+            navigationController?.popViewController(animated: true)
+        } else if isEditingTodo {
+            MartianApiManager<Todo>.patchData(data: todo,
+                                              success: { [weak self] message in
+                                                self?.success(message: message) },
+                                              failure: { [weak self] error in
+                                                self?.failure(error: error)
+            })
+        } else {
+            MartianApiManager<Todo>.postData(data: todo,
+                                             success: { [weak self] message in
+                                                self?.success(message: message) },
+                                             failure: { [weak self] error in
+                                                self?.failure(error: error)
+            })
+        }
     }
 }
 
@@ -65,5 +84,32 @@ private extension TodoFormViewController {
         todoFormView.title = todo.title
         view.addSubview(todoFormView)
         todoFormView.snp.makeConstraints { $0.edges.equalTo(view.safeAreaLayoutGuide) }
+    }
+    
+    func success(message: String) {
+        let alert = UIAlertController
+            .alertStyle(title: LocalizationKey.TodoForm.successAlertTitle.localized(),
+                        message: LocalizationKey.Alert.successAlertMessage.localized(message),
+                        cancelActionTitle: LocalizationKey.Alert.okAlertAction.localized(),   
+                        cancelActionHandler: { [weak self] _ in
+                            self?.todoHandler?((self?.todo)!)
+                            self?.navigationController?.popViewController(animated: true)
+            })
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func failure(error: LocalizedError) {
+        let message = error.localizedDescription
+        let alert = UIAlertController
+            .alertStyle(title: LocalizationKey.Alert.failureAlertTitle.localized(),
+                        message: LocalizationKey.Alert.failureAlertMessage.localized(message),
+                        cancelActionTitle: LocalizationKey.Alert.cancelAlertAction.localized(),
+                        cancelActionHandler: { [weak self] _ in
+                            self?.navigationController?.popViewController(animated: true)
+            })
+        alert.addAction(UIAlertAction(title: LocalizationKey.Alert.stayHereAlertAction.localized(),   
+                                      style: .default,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

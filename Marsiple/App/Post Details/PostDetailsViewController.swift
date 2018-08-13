@@ -67,11 +67,11 @@ private extension PostDetailsViewController {
     }
     
     func updateComments() {
-        MartianApiManager.getComments(forPostId: post.id,
-                                      success: { [weak self] comments in
-                                        self?.comments = comments
-                                        self?.postDetailsView.tableView.reloadData() },
-                                      failure: { error in
-                                        print(error.localizedDescription) })
+        MartianApiManager<Comment>.getData(withParentId: post.id,
+                                           success: { [weak self] comments in
+                                            self?.comments = comments
+                                            self?.postDetailsView.tableView.reloadData() },
+                                           failure: { error in
+                                            print(error.localizedDescription) })
     }
 }

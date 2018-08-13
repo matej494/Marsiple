@@ -34,28 +34,28 @@ private extension CommentViewController {
                               email: "johndoe@gmail.com",
                               body: commentView.text,
                               postId: postId)
-        MartianApiManager.postComment(comment: comment,
-                                      success: { [weak self] message in
-                                        let alert = UIAlertController
-                                            .alertStyle(title: LocalizationKey.Comment.successAlertTitle.localized(),
-                                                        message: LocalizationKey.Comment.successAlertMessage.localized(message),
-                                                        cancelActionTitle: LocalizationKey.Comment.okAlertAction.localized(),
-                                                        cancelActionHandler: { [weak self] _ in
-                                                            self?.commentCreationHandler()
-                                                            self?.navigationController?.popViewController(animated: true) })
-                                        self?.present(alert, animated: true, completion: nil) },
-                                      failure: { [weak self] error in
-                                        let message = error.localizedDescription
-                                        let alert = UIAlertController
-                                            .alertStyle(title: LocalizationKey.Comment.failureAlertTitle.localized(),
-                                                        message: LocalizationKey.Comment.failureAlertMessage.localized(message),
-                                                        cancelActionTitle: LocalizationKey.Comment.cancelAlertAction.localized(),
-                                                        cancelActionHandler: { [weak self] _ in
-                                                            self?.navigationController?.popViewController(animated: true) })
-                                        alert.addAction(UIAlertAction(title: LocalizationKey.Comment.stayHereAlertAction.localized(),
-                                                                      style: .default,
-                                                                      handler: nil))
-                                        self?.present(alert, animated: true, completion: nil) })
+        MartianApiManager<Comment>.postData(data: comment,
+                                            success: { [weak self] message in
+                                                let alert = UIAlertController
+                                                    .alertStyle(title: LocalizationKey.Comment.successAlertTitle.localized(),
+                                                                message: LocalizationKey.Alert.successAlertMessage.localized(message),
+                                                                cancelActionTitle: LocalizationKey.Alert.okAlertAction.localized(),
+                                                                cancelActionHandler: { [weak self] _ in
+                                                                    self?.commentCreationHandler()
+                                                                    self?.navigationController?.popViewController(animated: true) })
+                                                self?.present(alert, animated: true, completion: nil) },
+                                            failure: { [weak self] error in
+                                                let message = error.localizedDescription
+                                                let alert = UIAlertController
+                                                    .alertStyle(title: LocalizationKey.Alert.failureAlertTitle.localized(),
+                                                                message: LocalizationKey.Alert.failureAlertMessage.localized(message),
+                                                                cancelActionTitle: LocalizationKey.Alert.cancelAlertAction.localized(),
+                                                                cancelActionHandler: { [weak self] _ in
+                                                                    self?.navigationController?.popViewController(animated: true) })
+                                                alert.addAction(UIAlertAction(title: LocalizationKey.Alert.stayHereAlertAction.localized(),
+                                                                              style: .default,
+                                                                              handler: nil))
+                                                self?.present(alert, animated: true, completion: nil) })
     }
 }
 

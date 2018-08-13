@@ -33,12 +33,6 @@ struct LocalizationKey {
     struct Comment {
         static let navigationBarTitle = "comment_navigation_bar_title"
         static let successAlertTitle = "success_alert_title"
-        static let successAlertMessage = "success_alert_message"
-        static let failureAlertTitle = "failure_alert_title"
-        static let failureAlertMessage = "failure_alert_message"
-        static let okAlertAction = "ok_alert_action"
-        static let cancelAlertAction = "cancel_alert_action"
-        static let stayHereAlertAction = "stay_here_alert_action"
         static let commentTextPlaceholder = "comment_text_placeholder"
     }
     
@@ -64,5 +58,16 @@ struct LocalizationKey {
     struct TodoForm {
         static let navigationBarTitle = "todo_navigation_bar_title"
         static let titlePlaceholder = "todo_view_form_title_placeholder"
+        static let successAlertTitle = "success_alert_title"
+    }
+    
+    struct Alert {
+        static let successAlertMessage = "success_alert_message"
+        static let failureAlertTitle = "failure_alert_title"
+        static let failureAlertMessage = "failure_alert_message"
+        static let okAlertAction = "ok_alert_action"
+        static let cancelAlertAction = "cancel_alert_action"
+        static let stayHereAlertAction = "stay_here_alert_action"
+
     }
 }
