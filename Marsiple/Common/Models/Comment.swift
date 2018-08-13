@@ -8,7 +8,10 @@
 
 import Foundation
 
-class Comment: Codable {
+class Comment: Codable, Identifiable, Pathable {
+    static let path = MartianApi.URLs.comments
+    static let parentPath = MartianApi.URLs.posts
+    
     let id: Int
     let name: String
     let email: String

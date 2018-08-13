@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct HTTPRequestMethod {
-    static let get = "GET"
-    static let post = "POST"
-    static let put = "PUT"
-    static let patch = "PATCH"
-    static let delete = "DELETE"
+enum HTTPRequestMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case patch = "PATCH"
+    case delete = "DELETE"
 }

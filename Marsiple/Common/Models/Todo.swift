@@ -8,7 +8,10 @@
 
 import Foundation
 
-struct Todo: Codable {
+struct Todo: Codable, Identifiable, Pathable {
+    static let path = MartianApi.URLs.todos
+    static let parentPath = MartianApi.URLs.users
+    
     let id: Int
     var title: String
     var completed: Bool

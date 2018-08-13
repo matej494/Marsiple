@@ -8,76 +8,30 @@
 
 import Foundation
 
-class MartianApiManager {
-    static func getPosts(success: @escaping ([Post]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?.appendingPathComponent(MartianApi.URLs.posts)
+class MartianApiManager<DataType: Codable & Identifiable & Pathable> {
+    static func getData(withParentId id: Int? = nil, success: @escaping ([DataType]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = createUrl(withParentId: id)
             else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
-        getData(url: url, success: success, failure: failure)
+        getDataFromServer(url: url, success: success, failure: failure)
     }
     
-    static func getComments(forPostId id: Int, success: @escaping ([Comment]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-                            .appendingPathComponent(MartianApi.URLs.posts)
-                            .appendingPathComponent("\(id)")
-                            .appendingPathComponent(MartianApi.URLs.comments)
+    static func postData(data: DataType, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = createUrl()
             else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
-        getData(url: url, success: success, failure: failure)
+        print(url)
+        uploadDataToServer(data: data, requestMethod: .post, url: url, success: success, failure: failure)
     }
     
-    static func postComment(comment: Comment, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-                            .appendingPathComponent(MartianApi.URLs.posts)
-                            .appendingPathComponent("\(comment.postId)")
-                            .appendingPathComponent(MartianApi.URLs.comments)
-            else { return }
-        postData(data: comment, url: url, success: success, failure: failure)
-    }
-    
-    static func getAlbums(success: @escaping ([Album]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?.appendingPathComponent("albums")
+    static func patchData(data: DataType, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        guard let url = createUrl(withDataTypeId: data.id)
             else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
-        getData(url: url, success: success, failure: failure)
-    }
-    
-    static func getPhotos(albumId: Int, success: @escaping ([Photo]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-            .appendingPathComponent(MartianApi.URLs.albums)
-            .appendingPathComponent("\(albumId)")
-            .appendingPathComponent(MartianApi.URLs.photos)
-            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
-        getData(url: url, success: success, failure: failure)
-    }
-    
-    static func getTodos(userId: Int, success: @escaping ([Todo]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-            .appendingPathComponent(MartianApi.URLs.users)
-            .appendingPathComponent("\(userId)")
-            .appendingPathComponent(MartianApi.URLs.todos)
-            else { return DispatchQueue.main.async { failure(DataManagerError.urlCreationFailure) } }
-        getData(url: url, success: success, failure: failure)
-    }
-    
-    static func updateTodo(todo: Todo, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-            .appendingPathComponent(MartianApi.URLs.todos)
-            .appendingPathComponent("\(todo.id)")
-            else { return }
-        patchData(data: todo, url: url, success: success, failure: failure)
-    }
-    
-    static func postTodo(todo: Todo, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let url = MartianApi.url?
-            .appendingPathComponent(MartianApi.URLs.users)
-            .appendingPathComponent("\(todo.userId)")
-            .appendingPathComponent(MartianApi.URLs.todos)
-            else { return }
-        postData(data: todo, url: url, success: success, failure: failure)
+        uploadDataToServer(data: data, requestMethod: .patch, url: url, success: success, failure: failure)
     }
 }
 
 private extension MartianApiManager {
-    static func getData<DataType: Codable>(url: URL, success: @escaping ([DataType]) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        let request = setupRequest(url: url, method: HTTPRequestMethod.get)
+    static func getDataFromServer(url: URL, success: @escaping ([DataType]) -> Void, failure: @escaping (LocalizedError) -> Void) {
+        let request = URLRequest.martianApiURLRequest(url: url, method: .get)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -86,8 +40,8 @@ private extension MartianApiManager {
             do {
                 guard let unwrappedData = data
                     else { return DispatchQueue.main.async { failure(DataManagerError.dataUnwrapingFailure) } }
-                let posts = try JSONDecoder().decode([DataType].self, from: unwrappedData)
-                DispatchQueue.main.async { success(posts) }
+                let decodedData = try JSONDecoder().decode([DataType].self, from: unwrappedData)
+                DispatchQueue.main.async { success(decodedData) }
             } catch {
                 DispatchQueue.main.async { failure(DataManagerError.parsingDataFailure) }
             }
@@ -95,10 +49,10 @@ private extension MartianApiManager {
         task.resume()
     }
     
-    static func postData<DataType: Codable>(data: DataType, url: URL, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
+    static func uploadDataToServer(data: DataType, requestMethod: HTTPRequestMethod, url: URL, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
         guard let json = encodeData(data: data)
             else { return DispatchQueue.main.async { failure(DataManagerError.dataEncodingFailure) } }
-        let request = setupRequest(url: url, method: HTTPRequestMethod.post, body: json)
+        let request = URLRequest.martianApiURLRequest(url: url, method: requestMethod, body: json)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -106,27 +60,9 @@ private extension MartianApiManager {
             }
             guard let httpResponse = response as? HTTPURLResponse
                 else { return DispatchQueue.main.async { failure(DataManagerError.castingResponseFailure) } }
-            if httpResponse.statusCode == HTTPResponseCode.created.rawValue {
+            if httpResponse.statusCode == HTTPResponseCode.created.rawValue && requestMethod == HTTPRequestMethod.post {
                 return DispatchQueue.main.async { success(HTTPResponseCode.created.message) }
-            } else {
-                return DispatchQueue.main.async { failure(DataManagerError.httpResponseCode(httpResponse.statusCode)) }
-            }
-        }
-        task.resume()
-    }
-    
-    static func patchData<DataType: Codable>(data: DataType, url: URL, success: @escaping (String) -> Void, failure: @escaping (LocalizedError) -> Void) {
-        guard let json = encodeData(data: data)
-            else { return DispatchQueue.main.async { failure(DataManagerError.dataEncodingFailure) } }
-        let request = setupRequest(url: url, method: HTTPRequestMethod.patch, body: json)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                return DispatchQueue.main.async { failure(DataManagerError.generic(error)) }
-            }
-            guard let httpResponse = response as? HTTPURLResponse
-                else { return DispatchQueue.main.async { failure(DataManagerError.castingResponseFailure) } }
-            if httpResponse.statusCode == HTTPResponseCode.ok.rawValue {
+            } else if httpResponse.statusCode == HTTPResponseCode.ok.rawValue && requestMethod == HTTPRequestMethod.patch {
                 return DispatchQueue.main.async { success(HTTPResponseCode.ok.message) }
             } else {
                 return DispatchQueue.main.async { failure(DataManagerError.httpResponseCode(httpResponse.statusCode)) }
@@ -135,21 +71,23 @@ private extension MartianApiManager {
         task.resume()
     }
 
-    static func setupRequest(url: URL, method: String, body: Data? = nil) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = method
-        request.addValue(MartianApi.Headers.defaultContentType, forHTTPHeaderField: HTTPRequestHeader.contentType)
-        request.addValue(MartianApi.Headers.xAuthValue, forHTTPHeaderField: HTTPRequestHeader.xAuth)
-        request.httpBody = body
-        return request
-    }
-    
-    static func encodeData<DataType: Codable>(data: DataType) -> Data? {
+    static func encodeData(data: DataType) -> Data? {
         do {
             return try JSONEncoder().encode(data)
         } catch {
             print("Error encoding data.")
             return nil
         }
+    }
+    
+    static func createUrl(withDataTypeId id: Int? = nil, withParentId parentid: Int? = nil) -> URL? {
+        var url = MartianApi.url
+        if let id = parentid {
+            url = url?.appendingPathComponent(DataType.parentPath)
+                .appendingPathComponent("\(id)")
+        }
+        url = url?.appendingPathComponent(DataType.path)
+        if let id = id { url = url?.appendingPathComponent("\(id)") }
+        return url
     }
 }

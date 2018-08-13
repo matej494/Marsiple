@@ -15,7 +15,7 @@ class PostsViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         setupView()
-        MartianApiManager.getPosts(success: { [weak self] posts in
+        MartianApiManager<Post>.getData(success: { [weak self] posts in
             self?.posts = posts
             self?.postsView.tableView.reloadData()
         }, failure: { error in

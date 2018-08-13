@@ -36,6 +36,9 @@
 		F534E9422105F35200D3F1CE /* MartianApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9412105F35200D3F1CE /* MartianApiManager.swift */; };
 		F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E94421063FD300D3F1CE /* CommentViewController.swift */; };
 		F534E9472106407A00D3F1CE /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F534E9462106407A00D3F1CE /* CommentView.swift */; };
+		F53F1711211DA4DD0069BD0B /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F1710211DA4DD0069BD0B /* Identifiable.swift */; };
+		F54694C4212167E800919F64 /* Pathable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54694C3212167E800919F64 /* Pathable.swift */; };
+		F54694C62121700100919F64 /* URLRequest-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54694C52121700100919F64 /* URLRequest-Marsiple.swift */; };
 		F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B020FCB166001788D0 /* PostsViewController.swift */; };
 		F55050B320FCB272001788D0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B220FCB272001788D0 /* PostsView.swift */; };
 		F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */; };
@@ -98,6 +101,9 @@
 		F534E9412105F35200D3F1CE /* MartianApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MartianApiManager.swift; sourceTree = "<group>"; };
 		F534E94421063FD300D3F1CE /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		F534E9462106407A00D3F1CE /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		F53F1710211DA4DD0069BD0B /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		F54694C3212167E800919F64 /* Pathable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathable.swift; sourceTree = "<group>"; };
+		F54694C52121700100919F64 /* URLRequest-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest-Marsiple.swift"; sourceTree = "<group>"; };
 		F55050B020FCB166001788D0 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		F55050B220FCB272001788D0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
 		F55050B420FCB32F001788D0 /* UIView-Marsiple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Marsiple.swift"; sourceTree = "<group>"; };
@@ -316,6 +322,8 @@
 		F5E47ABB20FC88D2007184ED /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F53F1710211DA4DD0069BD0B /* Identifiable.swift */,
+				F54694C3212167E800919F64 /* Pathable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -335,6 +343,7 @@
 				F5072AA620FF77F6002B5E9E /* UIColor-Marsiple.swift */,
 				F5B106D1210B85D1008D12AA /* UIAlertController-Marsiple.swift */,
 				F56909C621089303009E23F2 /* UIBarButtonItem-Marsiple.swift */,
+				F54694C52121700100919F64 /* URLRequest-Marsiple.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -587,6 +596,7 @@
 				F501C6F2211C78F80038C527 /* TodoFormView.swift in Sources */,
 				F5072ABC2101FDB5002B5E9E /* Comment.swift in Sources */,
 				F55050B120FCB166001788D0 /* PostsViewController.swift in Sources */,
+				F54694C62121700100919F64 /* URLRequest-Marsiple.swift in Sources */,
 				F501C6E4211AEE540038C527 /* AlbumsViewController.swift in Sources */,
 				F534E9472106407A00D3F1CE /* CommentView.swift in Sources */,
 				F501C6FC211C79080038C527 /* TodosIndex.swift in Sources */,
@@ -602,6 +612,7 @@
 				F534E94521063FD300D3F1CE /* CommentViewController.swift in Sources */,
 				F501C6E3211AEE540038C527 /* AlbumsView.swift in Sources */,
 				F5072AAB20FF83B7002B5E9E /* HTTPRequestHeader.swift in Sources */,
+				F53F1711211DA4DD0069BD0B /* Identifiable.swift in Sources */,
 				F501C6DA211999C70038C527 /* Photo.swift in Sources */,
 				F534E9402105F09D00D3F1CE /* DataManagerError.swift in Sources */,
 				F5072AB62101E62C002B5E9E /* PostDetailsView.swift in Sources */,
@@ -612,6 +623,7 @@
 				F5072AB42101E51B002B5E9E /* PostDetailsViewController.swift in Sources */,
 				F55050B320FCB272001788D0 /* PostsView.swift in Sources */,
 				F5072AA720FF77F6002B5E9E /* UIColor-Marsiple.swift in Sources */,
+				F54694C4212167E800919F64 /* Pathable.swift in Sources */,
 				F55050B520FCB32F001788D0 /* UIView-Marsiple.swift in Sources */,
 				F55050B720FCB395001788D0 /* Post.swift in Sources */,
 				F501C6E2211AEE540038C527 /* PhotoCollectionViewController.swift in Sources */,

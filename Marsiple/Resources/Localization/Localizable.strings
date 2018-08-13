@@ -14,7 +14,7 @@
 "data_manager_data_unwrapping_failure" = "Error unwrapping data.";
 "data_manager_parsing_data_failure" = "Error parsing data.";
 "data_manager_data_encoding_failure" = "Error encoding data.";
-"data_manager_casting_response_failure" = "Error casting response";
+"data_manager_casting_response_failure" = "Error casting response.";
 
 /* Todos */
 "todos_navigation_bar_title" = "Todos";

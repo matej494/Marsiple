@@ -48,18 +48,18 @@ private extension TodoFormViewController {
         if originalTodo == todo || todo.title.isEmpty {
             navigationController?.popViewController(animated: true)
         } else if isEditingTodo {
-            MartianApiManager.updateTodo(todo: todo,
-                                         success: { [weak self] message in
-                                            self?.success(message: message) },
-                                         failure: { [weak self] error in
-                                            self?.failure(error: error)
+            MartianApiManager<Todo>.patchData(data: todo,
+                                              success: { [weak self] message in
+                                                self?.success(message: message) },
+                                              failure: { [weak self] error in
+                                                self?.failure(error: error)
             })
         } else {
-            MartianApiManager.postTodo(todo: todo,
-                                       success: { [weak self] message in
-                                        self?.success(message: message) },
-                                       failure: { [weak self] error in
-                                        self?.failure(error: error)
+            MartianApiManager<Todo>.postData(data: todo,
+                                             success: { [weak self] message in
+                                                self?.success(message: message) },
+                                             failure: { [weak self] error in
+                                                self?.failure(error: error)
             })
         }
     }

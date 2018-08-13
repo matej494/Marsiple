@@ -96,33 +96,33 @@ private extension TodosViewController {
     
     func setupTodos() {
         // NOTE: userId is used so app is testable (if all todos are downloaded it would be hard to see what's happening)
-        MartianApiManager.getTodos(userId: 2,
-                                   success: { [weak self] todos in
-                                    self?.todos.append(todos.filter({ $0.completed == false }))
-                                    self?.todos.append(todos.filter({ $0.completed }))
-                                    self?.todosView.tableView.reloadData() },
-                                   failure: { error in
-                                    print(error.localizedDescription)
+        MartianApiManager<Todo>.getData(withParentId: 2,
+                                        success: { [weak self] todos in
+                                            self?.todos.append(todos.filter({ $0.completed == false }))
+                                            self?.todos.append(todos.filter({ $0.completed }))
+                                            self?.todosView.tableView.reloadData() },
+                                        failure: { error in
+                                            print(error.localizedDescription)
         })
     }
 
     func didSelectCheckBox(atIndexPath indexPath: IndexPath) {
         var todo = todos[indexPath.section][indexPath.row]
         todo.completed = !todo.completed
-        MartianApiManager.updateTodo(todo: todo,
-                                     success: { [weak self] _ in
-                                        guard let todoCount = self?.todos[1 - indexPath.section].count else { return }
-                                        let finishIndexPath = IndexPath(row: indexPath.section * todoCount, section: 1 - indexPath.section)
-                                        self?.moveTodo(at: indexPath, to: finishIndexPath)
-                                        self?.moveRow(at: indexPath, to: finishIndexPath) },
-                                     failure: { [weak self] error in
-                                        let message = error.localizedDescription
-                                        let alert = UIAlertController
-                                            .alertStyle(title: LocalizationKey.Alert.failureAlertTitle.localized(),
-                                                        message: LocalizationKey.Alert.failureAlertMessage.localized(message),
-                                                        cancelActionTitle: LocalizationKey.Alert.cancelAlertAction.localized(),   
-                                                        cancelActionHandler: nil)
-                                        self?.present(alert, animated: true, completion: nil) })
+        MartianApiManager<Todo>.patchData(data: todo,
+                                          success: { [weak self] _ in
+                                            guard let todoCount = self?.todos[1 - indexPath.section].count else { return }
+                                            let finishIndexPath = IndexPath(row: indexPath.section * todoCount, section: 1 - indexPath.section)
+                                            self?.moveTodo(at: indexPath, to: finishIndexPath)
+                                            self?.moveRow(at: indexPath, to: finishIndexPath) },
+                                          failure: { [weak self] error in
+                                            let message = error.localizedDescription
+                                            let alert = UIAlertController
+                                                .alertStyle(title: LocalizationKey.Alert.failureAlertTitle.localized(),
+                                                            message: LocalizationKey.Alert.failureAlertMessage.localized(message),
+                                                            cancelActionTitle: LocalizationKey.Alert.cancelAlertAction.localized(),
+                                                            cancelActionHandler: nil)
+                                            self?.present(alert, animated: true, completion: nil) })
     }
     
     func moveTodo(at startIndexPath: IndexPath, to finishIndexPath: IndexPath) {
